@@ -13,6 +13,7 @@
   :root{
     --bg:#FAF5EF; --surface:#FFFFFF; --fg:#1E1826; --fg-dim:#6E6478;
     --heading:#3A2359; --accent:#C04A7E; --accent-2:#EC9159; --line:#E2D8CC;
+    --pink-tint:#FAECF2;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{
@@ -28,6 +29,9 @@
   .kicker .x{color:var(--fg)}
   h1{margin-top:.75rem;font-size:2.5rem;font-weight:700;line-height:1.15;color:var(--heading)}
   @media(min-width:48rem){h1{font-size:3rem}}
+  .lede{margin-top:1rem;color:var(--fg-dim)}
+  .lede a{color:var(--accent);font-weight:600;text-decoration:none}
+  .lede a:hover{text-decoration:underline}
 
   /* file cards */
   .files{margin-top:2.5rem;display:grid;gap:1rem}
@@ -44,13 +48,18 @@
   }
   .dl:hover{opacity:.9}
   .file-card .desc{margin-top:.75rem;font-size:.875rem;color:var(--fg-dim)}
+  .file-card .meta{margin-top:.5rem;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--fg-dim)}
 
   /* prompt windows */
-  .prompt{margin-top:2.25rem}
+  .prompt{margin-top:2.5rem}
   .prompt-label{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent)}
   .prompt-title{margin-top:.25rem;font-size:1.25rem;font-weight:600;color:var(--heading)}
+  .box-label{
+    margin-top:1rem;font-family:"JetBrains Mono",monospace;font-size:.7rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--fg-dim);
+  }
   .prompt-box{
-    position:relative;margin-top:.75rem;background:var(--surface);
+    position:relative;margin-top:.5rem;background:var(--surface);
     border:1px solid var(--line);border-radius:.5rem;
   }
   .prompt-box pre{
@@ -63,6 +72,32 @@
     border:1px solid var(--line);color:var(--fg-dim);background:var(--bg);cursor:pointer;
   }
   .copy-btn:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* expected one-liners + notes */
+  .expect{margin-top:.75rem;font-size:.875rem;color:var(--fg-dim)}
+  .expect .check{color:var(--accent);font-weight:700}
+  .expect a{color:var(--accent);text-decoration:none;font-weight:600;white-space:nowrap}
+  .expect a:hover{text-decoration:underline}
+  .note{
+    margin-top:1rem;background:var(--pink-tint);border:1px solid var(--accent);
+    border-radius:.5rem;padding:.9rem 1rem;font-size:.875rem;
+  }
+  .note strong{color:var(--accent)}
+
+  /* results link card */
+  .results-card{
+    margin-top:3rem;background:var(--surface);border:1px solid var(--line);
+    border-radius:.75rem;padding:1.25rem;
+  }
+  .results-card p{font-size:.875rem;color:var(--fg-dim)}
+  .results-card a.go{
+    display:inline-block;margin-top:.75rem;border:1px solid var(--accent);color:var(--accent);
+    font-weight:600;text-decoration:none;border-radius:.375rem;padding:.65rem 1.1rem;
+  }
+  .results-card a.go:hover{background:var(--accent);color:#fff}
+
+  footer{margin-top:3.5rem;border-top:1px solid var(--line);padding-top:1.25rem;
+    font-size:.875rem;color:var(--fg-dim)}
 </style>
 </head>
 <body>
@@ -70,6 +105,7 @@
 
   <p class="kicker">AI <span class="x">×</span> Women's Health · 20 July 2026 · Munich</p>
   <h1>Workshop data &amp; prompts</h1>
+  <p class="lede">Download the two files, then send the prompts in order — each one builds on the last. Stuck at any point? <a href="results.html">See the expected results&nbsp;→</a></p>
 
   <!-- the two files -->
   <div class="files">
@@ -77,81 +113,105 @@
       <span class="pill">FILE 1 · CSV</span><br>
       <a class="dl" href="cycle_test_data.csv" download>↓ cycle_test_data.csv</a>
       <p class="desc">period data: cycle dates, symptoms, mood</p>
+      <p class="meta">date · period_flow · symptoms · mood — 91 rows, 2 KB</p>
     </div>
     <div class="file-card">
       <span class="pill">FILE 2 · CSV</span><br>
       <a class="dl" href="wearable_test_data.csv" download>↓ wearable_test_data.csv</a>
-      <p class="desc">wearable data: sleep, resting heart rate, HRV, temperature</p>
+      <p class="desc">wearable data: sleep, resting heart rate, HRV, skin temperature</p>
+      <p class="meta">date · sleep_hours · resting_hr_bpm · hrv_ms · skin_temp_c — 176 rows, 5 KB</p>
     </div>
   </div>
 
   <!-- prompt 1 -->
   <section class="prompt">
     <p class="prompt-label">PROMPT 1</p>
-    <h2 class="prompt-title">Merge — propose the template <span style="font-weight:400;color:var(--fg-dim);font-size:.9rem">(attach both files)</span></h2>
+    <h2 class="prompt-title">Merge the source files <span style="font-weight:400;color:var(--fg-dim);font-size:.9rem">(attach both files)</span></h2>
+    <p class="box-label">Send this — propose the structure first</p>
     <div class="prompt-box">
-      <pre>You are a careful, methodical data analyst. I'm attaching two CSV exports covering the same six months: cycle_test_data.csv from my period app (columns: date, period_flow, symptoms, mood - only the days I logged something) and wearable_test_data.csv from my wearable (columns: date, sleep_hours, resting_hr_bpm, hrv_ms, skin_temp_c - one row per night I wore it).
+      <pre>You are a careful, methodical data analyst.
 
-Review both files. Then propose a structure for ONE merged table: which columns it should have and how you would combine the two files. Merge on date, and give every calendar day from the first to the last date its own row - even days that appear in neither file.
+I'm attaching two CSV exports covering the same six months: from my period app and from my wearable device.
+
+Review both files. Then propose a structure for ONE merged table: which columns it should have and how you'd combine the two files.
+
+You will merge on date, and give every calendar day from the first to the last date its own row — even days that appear in neither file.
 
 Show me the proposed column names and 3 example rows as a template first, and wait for my OK. Don't build anything yet.</pre>
       <button class="copy-btn">copy</button>
     </div>
+    <p class="box-label">Then, once you approve — build it</p>
+    <div class="prompt-box">
+      <pre>I approve the template. Now fill the merged table from the two files using real code, matching rows only on exact dates.
+
+If a file has no value for a day, leave that cell blank — never invent, estimate or interpolate.
+
+Once done, give me the merged table as a downloadable file.</pre>
+      <button class="copy-btn">copy</button>
+    </div>
+    <div class="note">
+      <strong>This merged file is now your master — save it.</strong> Chat has no memory; every prompt after this one builds on the file. Blank stays blank: never let the AI invent, estimate or interpolate a missing value.
+    </div>
+    <p class="expect"><a href="results.html#prompt-1">What you should see →</a></p>
   </section>
 
   <!-- prompt 2 -->
   <section class="prompt">
     <p class="prompt-label">PROMPT 2</p>
-    <h2 class="prompt-title">Merge — build the file</h2>
+    <h2 class="prompt-title">Label cycle days &amp; phases</h2>
+    <p class="box-label">Send this</p>
     <div class="prompt-box">
-      <pre>I approve the template - build it. Fill the merged table from the two files using real code, matching rows only on exact dates. If a file has no value for a day, leave that cell blank - never invent, estimate or interpolate values.
+      <pre>Now, using the merged table and real calculations (never estimates):
+1. Find the first day of each cycle (a period day that follows days without a period).
+2. Number every day within its cycle (day 1, day 2, ...).
+3. Label every day with a phase: menstrual (days 1-5), follicular, ovulatory (3 days centered 14 days before next period), luteal.
 
-Then give me the merged table as a downloadable file (Excel or CSV), and tell me: how many days it covers, how many days have no period-app entry, and how many nights have no wearable data.</pre>
+Show me the first 10 rows with cycle day and phase, and tell me how many complete cycles you found and how long each was.</pre>
       <button class="copy-btn">copy</button>
     </div>
+    <p class="expect"><span class="check">✓</span> You should see: 6 full cycles (may say 7 — a 7th is just starting), 27–30 days each. <a href="results.html#prompt-2">Full expected result →</a></p>
   </section>
 
   <!-- prompt 3 -->
   <section class="prompt">
     <p class="prompt-label">PROMPT 3</p>
-    <h2 class="prompt-title">Cycle days &amp; phases</h2>
+    <h2 class="prompt-title">Compute averages</h2>
+    <p class="box-label">Send this</p>
     <div class="prompt-box">
-      <pre>Now, using the merged table and real calculations (never estimates):
-1. Find the first day of each cycle (a period day that follows days without a period).
-2. Number every day within its cycle (day 1, day 2, ...).
-3. Label every day with a cycle phase: menstrual (days 1-5), follicular, ovulatory (around 14 days before the next period), luteal.
+      <pre>Now, with real calculations:
 
-Show me the first 10 rows with cycle day and phase, and tell me how many cycles you found and how long each one was.</pre>
+Make a table with the average skin temperature, resting heart rate, HRV and sleep hours for each of the four phases.</pre>
       <button class="copy-btn">copy</button>
     </div>
+    <p class="expect"><span class="check">✓</span> You should see: HRV drops sharply in the 2 days before every period — about 49 ms vs about 58 ms the rest of the luteal phase. Your wearable sees your period coming. Temperature steps up about 0.35 °C after ovulation and falls again just before the period. <a href="results.html#prompt-3">Full expected result →</a></p>
   </section>
 
   <!-- prompt 4 -->
   <section class="prompt">
     <p class="prompt-label">PROMPT 4</p>
-    <h2 class="prompt-title">Averages &amp; charts by phase</h2>
+    <h2 class="prompt-title">Insights in plain language</h2>
+    <p class="box-label">Send this</p>
     <div class="prompt-box">
-      <pre>Now, with real calculations:
-1. Make a table with the average skin temperature, resting heart rate, HRV and sleep hours for each of the four phases.
-2. Create one chart per signal: skin temperature by cycle day (all cycles on top of each other), and the phase averages for resting heart rate and HRV.
-3. Then zoom in: compare the last 2 days before each period with the rest of the luteal phase. What happens to HRV, resting heart rate and sleep on those days?
-Explain each chart in one sentence.</pre>
-      <button class="copy-btn">copy</button>
-    </div>
-  </section>
-
-  <!-- prompt 5 -->
-  <section class="prompt">
-    <p class="prompt-label">PROMPT 5</p>
-    <h2 class="prompt-title">Plain-language takeaways</h2>
-    <div class="prompt-box">
-      <pre>In plain language, no technical terms:
+      <pre>In plain English, no technical terms:
 1. What does my data say about how my body changes across my cycle?
-2. Is there any stretch in these six months where something unusual happened? If yes: when, what do you see in the data, and what everyday explanations could fit?
+
+2. Is there any stretch in these six months where something unusual happened? If yes: when, what do you see, and what everyday explanations fit?
+
 3. What is one thing I could pay attention to in my next cycle?</pre>
       <button class="copy-btn">copy</button>
     </div>
+    <p class="expect"><span class="check">✓</span> You should see: a summary in everyday words — spotting the 16–22 March stress week where HRV crashed, sleep collapsed and resting heart rate spiked. <a href="results.html#prompt-4">Full expected result →</a></p>
   </section>
+
+  <!-- results link -->
+  <div class="results-card">
+    <p><strong style="color:var(--heading)">Stuck, or your chat went sideways?</strong> No shame — it happens to everyone. The results page shows what every prompt should have produced, and has the finished merged file (Excel) so you can jump back in at any step.</p>
+    <a class="go" href="results.html">See the expected results →</a>
+  </div>
+
+  <footer>
+    <p>AI × Women's Health · 20 July 2026 · TUM Venture Labs Munich</p>
+  </footer>
 
 </main>
 <script>

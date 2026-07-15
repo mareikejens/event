@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expected results — AI × Women's Health</title>
+<meta name="description" content="What each workshop prompt should produce — with the finished merged file to download if you get stuck. 20 July 2026, TUM Venture Labs Munich.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* Brand system v3 — tokens from deck/2026-07-20_Event_Slide Master.potx */
+  :root{
+    --bg:#FAF5EF; --surface:#FFFFFF; --fg:#1E1826; --fg-dim:#6E6478;
+    --heading:#3A2359; --accent:#C04A7E; --accent-2:#EC9159; --line:#E2D8CC;
+    --pink-tint:#FAECF2; --orange-tint:#FBEADD;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg); color:var(--fg);
+    font-family:"Syne",ui-sans-serif,system-ui,sans-serif;
+    line-height:1.5; -webkit-font-smoothing:antialiased;
+  }
+  main{max-width:48rem;margin:0 auto;padding:3rem 1.25rem 4rem}
+  .kicker{
+    font-family:"JetBrains Mono",monospace; font-size:.75rem;
+    letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+  }
+  .kicker .x{color:var(--fg)}
+  h1{margin-top:.75rem;font-size:2.5rem;font-weight:700;line-height:1.15;color:var(--heading)}
+  @media(min-width:48rem){h1{font-size:3rem}}
+  .lede{margin-top:1rem;color:var(--fg-dim)}
+  a.back{color:var(--accent);font-weight:600;text-decoration:none;font-size:.875rem}
+  a.back:hover{text-decoration:underline}
+
+  /* rescue / download card */
+  .rescue{
+    margin-top:2rem;background:var(--surface);border:1px solid var(--accent);
+    border-radius:.75rem;padding:1.25rem;
+  }
+  .rescue h2{font-size:1.15rem;font-weight:600;color:var(--heading)}
+  .rescue p{margin-top:.5rem;font-size:.875rem;color:var(--fg-dim)}
+  .dl-row{margin-top:.9rem;display:flex;flex-wrap:wrap;gap:.75rem}
+  .dl{
+    display:inline-block;background:var(--accent-2);color:var(--fg);
+    font-weight:600;text-decoration:none;border-radius:.375rem;padding:.65rem 1.1rem;
+  }
+  .dl:hover{opacity:.9}
+  .dl.alt{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+  .dl.alt:hover{background:var(--accent);color:#fff;opacity:1}
+
+  /* sections */
+  section{margin-top:3rem}
+  .sec-label{font-family:"JetBrains Mono",monospace;font-size:.8rem;color:var(--accent)}
+  section h2.sec-title{margin-top:.25rem;font-size:1.4rem;font-weight:600;color:var(--heading)}
+  section p{margin-top:.75rem;color:var(--fg-dim);font-size:.95rem}
+  section p strong{color:var(--fg)}
+  .mono{font-family:"JetBrains Mono",monospace;font-size:.85em;color:var(--fg)}
+
+  /* tables */
+  .tbl-wrap{
+    margin-top:1rem;overflow-x:auto;background:var(--surface);
+    border:1px solid var(--line);border-radius:.5rem;
+  }
+  table{border-collapse:collapse;width:100%;font-family:"JetBrains Mono",monospace;font-size:.72rem}
+  th,td{padding:.45rem .6rem;text-align:left;white-space:nowrap;border-bottom:1px solid var(--line)}
+  thead th{background:var(--pink-tint);color:var(--heading);font-weight:700}
+  tbody tr:last-child td{border-bottom:0}
+  td:empty::after{content:"";}
+  .hl td{background:var(--orange-tint)}
+  .ellipsis td{color:var(--fg-dim);border-bottom:0}
+  caption{caption-side:bottom;text-align:left;padding:.5rem .6rem;color:var(--fg-dim);
+    font-family:"Syne",sans-serif;font-size:.75rem}
+
+  /* callouts */
+  .note{
+    margin-top:1rem;background:var(--pink-tint);border:1px solid var(--accent);
+    border-radius:.5rem;padding:.9rem 1rem;font-size:.875rem;
+  }
+  .note strong{color:var(--accent)}
+  .example{
+    margin-top:1rem;background:var(--surface);border-left:3px solid var(--accent);
+    border-radius:.5rem;padding:1rem 1.1rem;font-size:.9rem;
+  }
+  .example p{margin-top:.6rem;color:var(--fg);font-size:.9rem}
+  .example p:first-child{margin-top:0}
+  .example .q{font-weight:600;color:var(--heading)}
+
+  footer{margin-top:3.5rem;border-top:1px solid var(--line);padding-top:1.25rem;
+    font-size:.875rem;color:var(--fg-dim)}
+</style>
+</head>
+<body>
+<main>
+
+  <p class="kicker">AI <span class="x">×</span> Women's Health · 20 July 2026 · Munich</p>
+  <h1>Expected results</h1>
+  <p class="lede">What each prompt should have produced — from the same two files you downloaded. Your AI's wording and table style will look different; the <strong style="color:var(--fg)">numbers and patterns</strong> should match what's below.</p>
+  <p style="margin-top:.75rem"><a class="back" href="index.html">← Back to the prompts</a></p>
+
+  <!-- rescue download -->
+  <div class="rescue">
+    <h2>Stuck on the merge? Grab the finished file</h2>
+    <p>This is exactly what Prompt 1 should give you: one table, one row per calendar day, blanks left blank. Download it, open a fresh chat, attach it — and continue with Prompt 2 as if nothing happened.</p>
+    <div class="dl-row">
+      <a class="dl" href="merged_test_data.xlsx" download>↓ merged_test_data.xlsx</a>
+      <a class="dl alt" href="merged_test_data.csv" download>↓ same file as CSV</a>
+    </div>
+  </div>
+
+  <!-- after prompt 1 -->
+  <section id="prompt-1">
+    <p class="sec-label">AFTER PROMPT 1</p>
+    <h2 class="sec-title">One merged table, one row per day</h2>
+    <p>First the AI proposes a small template and waits for your OK. After you approve, you get one table with <strong>181 rows</strong> — every day from 1 January to 30 June 2026 — and the columns of both files side by side:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>date</th><th>period_flow</th><th>symptoms</th><th>mood</th><th>sleep_hours</th><th>resting_hr_bpm</th><th>hrv_ms</th><th>skin_temp_c</th></tr></thead>
+        <tbody>
+          <tr><td>2026-01-01</td><td>heavy</td><td>cramps</td><td>okay</td><td>7.1</td><td>56</td><td>57</td><td>36.11</td></tr>
+          <tr><td>2026-01-02</td><td>heavy</td><td></td><td>low</td><td>7.4</td><td>56</td><td>64</td><td>36.16</td></tr>
+          <tr><td>2026-01-03</td><td>medium</td><td>cramps</td><td>okay</td><td>7.2</td><td>55</td><td>67</td><td>36.18</td></tr>
+          <tr><td>2026-01-04</td><td>light</td><td></td><td>good</td><td>7.4</td><td>56</td><td>72</td><td>36.23</td></tr>
+          <tr><td>2026-01-05</td><td>spotting</td><td>low energy</td><td>okay</td><td>7.6</td><td>57</td><td>61</td><td>36.11</td></tr>
+          <tr><td>2026-01-06</td><td></td><td></td><td></td><td>7.7</td><td>57</td><td>66</td><td>36.23</td></tr>
+          <tr><td>2026-01-07</td><td></td><td></td><td></td><td>7.4</td><td>57</td><td>62</td><td>36.13</td></tr>
+          <tr class="ellipsis"><td colspan="8">⋯ 181 rows in total, through 2026-06-30 ⋯</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Sanity checks: <strong>90 days</strong> are blank in the period-app columns (she only opens the app when something's up) and <strong>5 nights</strong> are blank in the wearable columns (ring not worn).</p>
+    <div class="note"><strong>Blanks are correct.</strong> If your table has no empty cells, the AI invented values — ask it what it did, or start over with the file above.</div>
+  </section>
+
+  <!-- after prompt 2 -->
+  <section id="prompt-2">
+    <p class="sec-label">AFTER PROMPT 2</p>
+    <h2 class="sec-title">Cycle days &amp; phases labeled</h2>
+    <p>The first 10 rows now carry two new columns, <span class="mono">cycle_day</span> and <span class="mono">phase</span>:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>date</th><th>period_flow</th><th>mood</th><th>hrv_ms</th><th>skin_temp_c</th><th>cycle_day</th><th>phase</th></tr></thead>
+        <tbody>
+          <tr><td>2026-01-01</td><td>heavy</td><td>okay</td><td>57</td><td>36.11</td><td>1</td><td>menstrual</td></tr>
+          <tr><td>2026-01-02</td><td>heavy</td><td>low</td><td>64</td><td>36.16</td><td>2</td><td>menstrual</td></tr>
+          <tr><td>2026-01-03</td><td>medium</td><td>okay</td><td>67</td><td>36.18</td><td>3</td><td>menstrual</td></tr>
+          <tr><td>2026-01-04</td><td>light</td><td>good</td><td>72</td><td>36.23</td><td>4</td><td>menstrual</td></tr>
+          <tr><td>2026-01-05</td><td>spotting</td><td>okay</td><td>61</td><td>36.11</td><td>5</td><td>menstrual</td></tr>
+          <tr><td>2026-01-06</td><td></td><td></td><td>66</td><td>36.23</td><td>6</td><td>follicular</td></tr>
+          <tr><td>2026-01-07</td><td></td><td></td><td>62</td><td>36.13</td><td>7</td><td>follicular</td></tr>
+          <tr><td>2026-01-08</td><td></td><td></td><td>61</td><td>36.18</td><td>8</td><td>follicular</td></tr>
+          <tr><td>2026-01-09</td><td></td><td></td><td>69</td><td>36.19</td><td>9</td><td>follicular</td></tr>
+          <tr><td>2026-01-10</td><td></td><td></td><td>64</td><td>36.21</td><td>10</td><td>follicular</td></tr>
+        </tbody>
+        <caption>(symptoms, sleep and resting-heart-rate columns hidden here for width — yours keeps them all)</caption>
+      </table>
+    </div>
+    <p>And the cycles it should find:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>cycle</th><th>starts</th><th>length</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>1 Jan 2026</td><td>28 days</td></tr>
+          <tr><td>2</td><td>29 Jan 2026</td><td>29 days</td></tr>
+          <tr><td>3</td><td>27 Feb 2026</td><td>27 days</td></tr>
+          <tr><td>4</td><td>26 Mar 2026</td><td>30 days</td></tr>
+          <tr><td>5</td><td>25 Apr 2026</td><td>28 days</td></tr>
+          <tr><td>6</td><td>23 May 2026</td><td>29 days</td></tr>
+          <tr><td>(7)</td><td>21 Jun 2026</td><td>just starting when the data ends</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>6 complete cycles, 27–30 days each.</strong> Your AI may answer "7" because a seventh period starts on 21 June — both are fine. If it finds something very different, ask it to double-check how it detected cycle starts.</p>
+  </section>
+
+  <!-- after prompt 3 -->
+  <section id="prompt-3">
+    <p class="sec-label">AFTER PROMPT 3</p>
+    <h2 class="sec-title">Averages for each phase</h2>
+    <p>One small table. Your numbers may differ by a decimal or two depending on how your AI assigned the phases — the <strong>pattern</strong> is what matters: in the luteal phase, temperature and resting heart rate go up while HRV and sleep go down.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>phase</th><th>skin temp (°C)</th><th>resting HR (bpm)</th><th>HRV (ms)</th><th>sleep (h)</th></tr></thead>
+        <tbody>
+          <tr><td>menstrual</td><td>36.15</td><td>56.5</td><td>64.6</td><td>7.4</td></tr>
+          <tr><td>follicular</td><td>36.15</td><td>56.8</td><td>67.7</td><td>7.4</td></tr>
+          <tr><td>ovulatory</td><td>36.33</td><td>58.6</td><td>66.2</td><td>7.2</td></tr>
+          <tr class="hl"><td>luteal</td><td>36.46</td><td>61.9</td><td>56.4</td><td>7.1</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>Temperature steps up about <strong>0.35 °C after ovulation</strong> and stays up — then falls again just before the period. That step is the hormonal signature your wearable records every month.</p>
+    <p>Want the party trick? Send one more line — <span class="mono">"Now compare the last 2 days before each period with the rest of the luteal phase."</span> — and you get:</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th></th><th>rest of luteal</th><th>last 2 days before period</th></tr></thead>
+        <tbody>
+          <tr><td>HRV (ms)</td><td>≈ 58</td><td><strong>≈ 49</strong></td></tr>
+          <tr><td>resting HR (bpm)</td><td>≈ 62</td><td>≈ 63 — peaks</td></tr>
+          <tr><td>sleep (h)</td><td>≈ 7.2</td><td>≈ 6.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p><strong>HRV drops sharply in the 2 days before every period</strong> — about 49 ms vs about 58 ms the rest of the luteal phase. Your wearable sees your period coming.</p>
+  </section>
+
+  <!-- after prompt 4 -->
+  <section id="prompt-4">
+    <p class="sec-label">AFTER PROMPT 4</p>
+    <h2 class="sec-title">The story, in plain English</h2>
+    <p>No two AIs write this the same way — but a good answer covers these three things:</p>
+    <div class="example">
+      <p class="q">1 · How your body changes across the cycle</p>
+      <p>"In the first half of each cycle your body runs cool and recovered: temperature low, heart rate low, recovery (HRV) at its best. After ovulation everything shifts — you run about a third of a degree warmer, your heart beats a few beats faster at rest, and recovery dips. The last two days before each period are the low point: recovery drops clearly and sleep gets shorter — and then day one of the period resets everything."</p>
+      <p class="q">2 · The unusual stretch</p>
+      <p>"One week stands out: <strong>16–22 March</strong>. Recovery collapsed far below anything hormonal, sleep fell to around six hours, and resting heart rate jumped — right in the middle of a cycle, so the cycle can't explain it. Your own app entries that week say 'stressed'. A rough week at work, an illness brewing, or travel would all fit."</p>
+      <p class="q">3 · One thing to watch next cycle</p>
+      <p>"Watch the two days before your period: when recovery dips and sleep shortens, that's your body's heads-up. Plan those days a little lighter — and see if the pattern holds for you."</p>
+    </div>
+    <div class="note"><strong>The AI plays detective — you judge whether the story fits.</strong> It should find the March week on its own and use the mood entries as supporting evidence. Everyday explanations are hypotheses, not diagnoses.</div>
+  </section>
+
+  <p style="margin-top:3rem"><a class="back" href="index.html">← Back to the prompts</a></p>
+
+  <footer>
+    <p>AI × Women's Health · 20 July 2026 · TUM Venture Labs Munich</p>
+  </footer>
+
+</main>
+</body>
+</html>
