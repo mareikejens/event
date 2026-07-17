@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Before Monday · 2 minutes, all anonymous · AI × Women's Health</title>
+<meta name="description" content="Pre-event survey for Understand Your Hormones with AI, Mon 20 July 2026, TranslaTUM Munich. Anonymous, two minutes.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf5ef; --surface:#fff; --fg:#1e1826; --fg-dim:#6e6478;
+  --heading:#3a2359; --accent:#c04a7e; --accent-2:#ec9159;
+  --line:#e2d8cc; --pink-tint:#faecf2; --orange-tint:#fbeadd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--fg);
+  font-family:"Syne",ui-sans-serif,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.5;
+}
+main{max-width:44rem;margin:0 auto;padding:4rem 1.25rem 5rem}
+.kicker{
+  font-family:"JetBrains Mono",monospace; font-size:.75rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+}
+h1{margin-top:.75rem;font-size:2.25rem;font-weight:700;line-height:1.15;color:var(--heading)}
+h1 .pink{color:var(--accent)}
+.intro{margin-top:1rem;color:var(--fg-dim);font-size:1.05rem}
+.section-label{
+  margin:2.75rem 0 1rem; font-family:"JetBrains Mono",monospace;
+  font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-dim);
+  display:flex; align-items:center; gap:.75rem;
+}
+.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.q{
+  background:var(--surface); border:1px solid var(--line); border-radius:.5rem;
+  padding:1.5rem 1.5rem 1.4rem; margin-top:1rem;
+}
+.q.invalid{border-color:var(--accent)}
+.q h2{font-size:1.1rem;font-weight:700;color:var(--heading)}
+.req{color:var(--accent)}
+.opt,.help{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fg-dim)}
+.help{display:block;margin-top:.35rem}
+.opts{margin-top:1rem;display:grid;gap:.5rem}
+label.choice{
+  display:flex;align-items:flex-start;gap:.7rem;cursor:pointer;
+  border:1px solid var(--line);border-radius:.375rem;padding:.65rem .85rem;
+  transition:border-color .12s, background-color .12s; font-size:.95rem;
+}
+label.choice:hover{border-color:var(--accent)}
+label.choice:has(:checked){border-color:var(--accent);background:var(--pink-tint)}
+input[type=radio],input[type=checkbox]{
+  appearance:none;flex:none;width:1.05rem;height:1.05rem;margin-top:.15rem;
+  border:2px solid var(--fg-dim);background:var(--surface);cursor:pointer;
+}
+input[type=radio]{border-radius:50%}
+input[type=checkbox]{border-radius:.2rem}
+input[type=radio]:checked,input[type=checkbox]:checked{
+  border-color:var(--accent);background:var(--accent);
+  box-shadow:inset 0 0 0 2.5px var(--surface);
+}
+input[type=checkbox]:checked{box-shadow:inset 0 0 0 2px var(--surface)}
+textarea,input[type=text]{
+  width:100%;margin-top:1rem;font:inherit;font-size:.95rem;color:var(--fg);
+  background:var(--surface);border:1px solid var(--line);border-radius:.375rem;
+  padding:.7rem .85rem;
+}
+textarea{min-height:5.5rem;resize:vertical}
+textarea:focus,input[type=text]:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+input.other-text{margin-top:0;padding:.2rem .5rem;border-width:0 0 1px;border-radius:0;flex:1}
+.err{display:none;margin-top:.7rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--accent)}
+.q.invalid .err{display:block}
+#branch-apps{display:none}
+#branch-apps.show{display:block}
+button[type=submit]{
+  margin-top:2.5rem;width:100%;cursor:pointer;
+  background:var(--accent-2);color:var(--fg);border:none;border-radius:.375rem;
+  font:inherit;font-weight:600;font-size:1.05rem;padding:.9rem 1.5rem;
+}
+button[type=submit]:hover{opacity:.9}
+footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fg-dim);text-align:center}
+#thanks{display:none;text-align:center;padding:5rem 0}
+#thanks h1{font-size:2rem}
+#thanks p{margin-top:1rem;color:var(--fg-dim)}
+#config-warning{
+  display:none;margin-top:1.5rem;border:1px solid var(--accent-2);
+  background:var(--orange-tint);border-radius:.375rem;padding:.8rem 1rem;
+  font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--fg);
+}
+@media(min-width:48rem){h1{font-size:2.75rem}}
+</style>
+</head>
+<body>
+<main>
+  <div id="form-view">
+    <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health · Pre-event survey</p>
+    <h1>Before Monday: <span class="pink">2&nbsp;minutes,</span> all anonymous.</h1>
+    <p class="intro">Thanks for signing up for <strong>Understand Your Hormones with AI</strong> (Mon 20 July, TranslaTUM Munich). A handful of quick questions so we can shape the evening around the people actually in the room. No name, no email, no tracking. Just honesty. 💜</p>
+
+    <p class="intro" style="margin-top:.6rem">Not signed up yet? <a href="https://luma.com/1qhf93x5" style="color:var(--accent);text-decoration:underline;font-weight:600">Grab your free spot on Luma</a></p>
+
+    <div id="config-warning">⚠ Not connected to a response sheet yet: submissions go nowhere. Fill in GOOGLE_FORM in the page source before sharing this link.</div>
+
+    <form id="survey" novalidate>
+
+      <p class="section-label">Your evening</p>
+
+      <div class="q" data-name="q1">
+        <h2>What's the one question you'd love to have answered on Monday? <span class="opt">optional</span></h2>
+        <span class="help">About the cycle — yours or in general — about your data, about AI… anything. We read every single answer while finalizing the session.</span>
+        <textarea name="q1" placeholder="Your question…"></textarea>
+      </div>
+
+      <div class="q" data-name="q2" data-required="checkbox">
+        <h2>What do you hope to take home from the evening? <span class="req">*</span></h2>
+        <span class="help">Pick up to 3.</span>
+        <div class="opts">
+          <label class="choice"><input type="checkbox" name="q2" value="Finally understand the menstrual cycle (mine, or of someone I care about)"><span>Finally understand the menstrual cycle (mine, or of someone I care about)</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="Learn what a wearable actually measures and how to read it"><span>Learn what a wearable actually measures and how to read it</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="Get hands-on with AI for the first time"><span>Get hands-on with AI for the first time</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="Get better at using AI than I am today"><span>Get better at using AI than I am today</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="Understand what happens to my data and take back control"><span>Understand what happens to my data and take back control</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="Meet like-minded people"><span>Meet like-minded people</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline">Something else:&nbsp;<input type="text" class="other-text" name="q2_other" aria-label="Something else, please specify"></span></label>
+        </div>
+        <p class="err">Please pick at least one (up to 3).</p>
+      </div>
+
+      <p class="section-label">Your data</p>
+
+      <div class="q" data-name="q3" data-required="radio">
+        <h2>Do you currently track your health data? <span class="req">*</span></h2>
+        <span class="help">Health data = anything from period or sleep tracking to heart rate, steps, workouts, mood.</span>
+        <div class="opts">
+          <label class="choice"><input type="radio" name="q3" value="Yes, in one app" data-branch="yes"><span>Yes, in one app</span></label>
+          <label class="choice"><input type="radio" name="q3" value="Yes, in several apps" data-branch="yes"><span>Yes, in several apps</span></label>
+          <label class="choice"><input type="radio" name="q3" value="Yes, but only offline, in my own file" data-branch="yes"><span>Yes, but only offline, in my own file</span></label>
+          <label class="choice"><input type="radio" name="q3" value="Not yet, but I want to start"><span>Not yet, but I want to start</span></label>
+          <label class="choice"><input type="radio" name="q3" value="No, and I'm not planning to"><span>No, and I'm not planning to</span></label>
+        </div>
+        <p class="err">Please pick one.</p>
+      </div>
+
+      <div id="branch-apps">
+        <p class="section-label">Your apps</p>
+
+        <div class="q" data-name="q4" data-required="text">
+          <h2>Which apps or devices do you track with? <span class="req">*</span></h2>
+          <span class="help">e.g. Flo, Clue, Apple Watch, Garmin, Oura, Whoop, a spreadsheet … whatever you use.</span>
+          <input type="text" name="q4" placeholder="Your apps & devices…">
+          <p class="err">Please tell us which (one word is enough).</p>
+        </div>
+
+        <div class="q" data-name="q5" data-required="radio">
+          <h2>How do you feel about what your apps currently <em>do</em> with your data? <span class="req">*</span></h2>
+          <div class="opts">
+            <label class="choice"><input type="radio" name="q5" value="Happy: they show me what I want to know"><span>Happy: they show me what I want to know</span></label>
+            <label class="choice"><input type="radio" name="q5" value="Mixed: some insights, but I expected more"><span>Mixed: some insights, but I expected more</span></label>
+            <label class="choice"><input type="radio" name="q5" value="Unhappy: they collect a lot and tell me little"><span>Unhappy: they collect a lot and tell me little</span></label>
+            <label class="choice"><input type="radio" name="q5" value="I've honestly never thought about it"><span>I've honestly never thought about it</span></label>
+          </div>
+          <p class="err">Please pick one.</p>
+          <textarea name="q5b" placeholder="Want to say why? (optional)"></textarea>
+        </div>
+      </div>
+
+      <p class="section-label">You + AI</p>
+
+      <div class="q" data-name="q6" data-required="checkbox">
+        <h2>Who would you feel comfortable sharing personal health data with, if you clearly got something back for it? <span class="req">*</span></h2>
+        <div class="opts">
+          <label class="choice"><input type="checkbox" name="q6" value="US companies (e.g. most big apps & wearables)"><span>US companies (e.g. most big apps &amp; wearables)</span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="EU companies"><span>EU companies</span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="German non-profits or universities, for research"><span>German non-profits or universities, for research</span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="German government / public institutions"><span>German government / public institutions</span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="My health insurance"><span>My health insurance</span></label>
+          <label class="choice"><input type="checkbox" name="q6" value="Nobody, my data stays with me" id="q6-nobody"><span>Nobody, my data stays with me</span></label>
+        </div>
+        <p class="err">Please pick at least one ("Nobody" counts).</p>
+      </div>
+
+      <div class="q" data-name="q7" data-required="radio">
+        <h2>Have you used AI to analyze data before? <span class="req">*</span></h2>
+        <div class="opts">
+          <label class="choice"><input type="radio" name="q7" value="Yes, now and then, in a chatbot (ChatGPT, Claude, …)"><span>Yes, now and then, in a chatbot (ChatGPT, Claude, …)</span></label>
+          <label class="choice"><input type="radio" name="q7" value="Yes, regularly, with my own setups or projects"><span>Yes, regularly, with my own setups or projects</span></label>
+          <label class="choice"><input type="radio" name="q7" value="Not yet, but that's exactly why I'm coming"><span>Not yet, but that's exactly why I'm coming</span></label>
+          <label class="choice"><input type="radio" name="q7" value="No, AI is new territory for me"><span>No, AI is new territory for me</span></label>
+        </div>
+        <p class="err">Please pick one.</p>
+      </div>
+
+      <div class="q" data-name="q8" data-required="radio">
+        <h2>For our planning: what will you bring to the workshop? <span class="req">*</span></h2>
+        <div class="opts">
+          <label class="choice"><input type="radio" name="q8" value="Laptop + a paid AI account (Claude Pro or ChatGPT Plus)"><span>Laptop + a paid AI account (Claude Pro or ChatGPT Plus)</span></label>
+          <label class="choice"><input type="radio" name="q8" value="Laptop + a free AI account"><span>Laptop + a free AI account</span></label>
+          <label class="choice"><input type="radio" name="q8" value="Laptop, no account yet"><span>Laptop, no account yet</span></label>
+          <label class="choice"><input type="radio" name="q8" value="No laptop, I'll watch and repeat at home"><span>No laptop, I'll watch and repeat at home</span></label>
+        </div>
+        <p class="err">Please pick one.</p>
+      </div>
+
+      <button type="submit">Send · see you Monday</button>
+    </form>
+
+    <footer>Understand Your Hormones with AI · Mon 20 July · TranslaTUM Munich · <a href="https://luma.com/1qhf93x5" style="text-decoration:underline">luma.com/1qhf93x5</a></footer>
+  </div>
+
+  <div id="thanks">
+    <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health</p>
+    <h1>Thank you! <span class="pink">💜</span></h1>
+    <p>See you Monday, doors open at 17:00.<br>TranslaTUM, Einsteinstraße 25, München. Entrance directly on Einsteinstraße.</p>
+  </div>
+</main>
+
+<script>
+/* ── Response backend ─────────────────────────────────────────────────────
+   Responses are POSTed into a Google Form (→ its linked Google Sheet).
+   One-time hookup:
+   1. Create a Google Form with 9 PARAGRAPH questions titled q1…q8 + q5b
+      (plain text sinks — this page does all the real UI and validation).
+   2. Open the form's ⋮ menu → "Get pre-filled link", type the question
+      title into each field, generate the link. It contains
+      entry.123456789=q1 etc. — copy each number below.
+   3. formId = the long id in the form's /viewform URL (starts "1FAIpQLS…").
+   Until this is filled in, the page shows a warning and won't lose data
+   silently — the submit button alerts instead. */
+const GOOGLE_FORM = {
+  formId: "1FAIpQLSf6ZlAu2lVtTo4E7OBji87sjelDyEYPDh4z2f0J-txy2mCFiQ",
+  entries: { q1:"1269797347", q2:"63232851", q3:"1334559706", q4:"199883023", q5:"1071736515", q5b:"793219402", q6:"57041730", q7:"1347439415", q8:"1473181235" }
+};
+/* ───────────────────────────────────────────────────────────────────────── */
+
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const configured = GOOGLE_FORM.formId && Object.values(GOOGLE_FORM.entries).every(Boolean);
+if (!configured) $("#config-warning").style.display = "block";
+
+/* Branching: apps section only for trackers */
+$$('input[name=q3]').forEach(r => r.addEventListener('change', () => {
+  const show = r.dataset.branch === "yes";
+  $("#branch-apps").classList.toggle("show", show);
+  if (!show) {
+    $('input[name=q4]').value = "";
+    $$('input[name=q5]').forEach(x => x.checked = false);
+    $('textarea[name=q5b]').value = "";
+  }
+}));
+
+/* Q2: max 3 */
+$$('input[name=q2]').forEach(c => c.addEventListener('change', () => {
+  const boxes = $$('input[name=q2]');
+  const full = boxes.filter(b => b.checked).length >= 3;
+  boxes.forEach(b => { if (!b.checked) b.disabled = full; b.closest('label').style.opacity = b.disabled ? .45 : 1; });
+}));
+/* Q2: typing in "Something else" ticks its box */
+$('input[name=q2_other]').addEventListener('input', e => {
+  const box = e.target.closest('label').querySelector('input[type=checkbox]');
+  if (e.target.value.trim() && !box.disabled) { box.checked = true; box.dispatchEvent(new Event('change')); }
+});
+
+/* Q6: "Nobody" is exclusive */
+$$('input[name=q6]').forEach(c => c.addEventListener('change', () => {
+  const nobody = $('#q6-nobody');
+  if (c === nobody && nobody.checked) $$('input[name=q6]').forEach(b => { if (b !== nobody) b.checked = false; });
+  else if (c.checked) nobody.checked = false;
+}));
+
+function collect() {
+  const val = {};
+  val.q1 = $('textarea[name=q1]').value.trim();
+  val.q2 = $$('input[name=q2]:checked').map(b =>
+    b.value === "__other__" ? "Something else: " + $('input[name=q2_other]').value.trim() : b.value
+  ).join("; ");
+  val.q3 = ($('input[name=q3]:checked') || {}).value || "";
+  const tracker = $("#branch-apps").classList.contains("show");
+  val.q4  = tracker ? $('input[name=q4]').value.trim() : "";
+  val.q5  = tracker ? (($('input[name=q5]:checked') || {}).value || "") : "";
+  val.q5b = tracker ? $('textarea[name=q5b]').value.trim() : "";
+  val.q6 = $$('input[name=q6]:checked').map(b => b.value).join("; ");
+  val.q7 = ($('input[name=q7]:checked') || {}).value || "";
+  val.q8 = ($('input[name=q8]:checked') || {}).value || "";
+  return val;
+}
+
+function validate(val) {
+  let firstBad = null;
+  $$('.q').forEach(q => {
+    const name = q.dataset.name, kind = q.dataset.required;
+    if (!kind || q.closest('#branch-apps') && !$("#branch-apps").classList.contains("show")) { q.classList.remove('invalid'); return; }
+    const ok = kind === "text" ? !!val[name] : !!val[name];
+    q.classList.toggle('invalid', !ok);
+    if (!ok && !firstBad) firstBad = q;
+  });
+  if (firstBad) firstBad.scrollIntoView({ behavior: "smooth", block: "center" });
+  return !firstBad;
+}
+
+$("#survey").addEventListener("submit", e => {
+  e.preventDefault();
+  const val = collect();
+  if (!validate(val)) return;
+  if (!configured) { alert("This form isn't connected to the response sheet yet (GOOGLE_FORM in the page source is empty)."); return; }
+  const body = new URLSearchParams();
+  for (const [k, id] of Object.entries(GOOGLE_FORM.entries)) if (val[k]) body.append("entry." + id, val[k]);
+  fetch(`https://docs.google.com/forms/d/e/${GOOGLE_FORM.formId}/formResponse`,
+        { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
+    .finally(() => { $("#form-view").style.display = "none"; $("#thanks").style.display = "block"; window.scrollTo(0, 0); });
+});
+</script>
+</body>
+</html>
