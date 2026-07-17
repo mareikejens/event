@@ -121,7 +121,6 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <div class="opts">
           <label class="choice"><input type="checkbox" name="q2" value="Finally understand the menstrual cycle (mine, or of someone I care about)"><span>Finally understand the menstrual cycle (mine, or of someone I care about)</span></label>
           <label class="choice"><input type="checkbox" name="q2" value="Learn what a wearable actually measures and how to read it"><span>Learn what a wearable actually measures and how to read it</span></label>
-          <label class="choice"><input type="checkbox" name="q2" value="Get hands-on with AI for the first time"><span>Get hands-on with AI for the first time</span></label>
           <label class="choice"><input type="checkbox" name="q2" value="Get better at using AI than I am today"><span>Get better at using AI than I am today</span></label>
           <label class="choice"><input type="checkbox" name="q2" value="Understand what happens to my data and take back control"><span>Understand what happens to my data and take back control</span></label>
           <label class="choice"><input type="checkbox" name="q2" value="Meet like-minded people"><span>Meet like-minded people</span></label>
@@ -205,6 +204,52 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <p class="err">Please pick one.</p>
       </div>
 
+      <div id="about-you">
+        <p class="section-label">About you</p>
+
+        <div class="q" data-name="q9" data-required="radio">
+          <h2>How old are you? <span class="req">*</span></h2>
+          <span class="help">Still anonymous. These last three just help us understand who's in the room.</span>
+          <div class="opts">
+            <label class="choice"><input type="radio" name="q9" value="Under 25"><span>Under 25</span></label>
+            <label class="choice"><input type="radio" name="q9" value="25–34"><span>25–34</span></label>
+            <label class="choice"><input type="radio" name="q9" value="35–44"><span>35–44</span></label>
+            <label class="choice"><input type="radio" name="q9" value="45–54"><span>45–54</span></label>
+            <label class="choice"><input type="radio" name="q9" value="55 or older"><span>55 or older</span></label>
+            <label class="choice"><input type="radio" name="q9" value="Prefer not to say"><span>Prefer not to say</span></label>
+          </div>
+          <p class="err">Please pick one ("Prefer not to say" counts).</p>
+        </div>
+
+        <div class="q" data-name="q10" data-required="radio">
+          <h2>What's your professional background? <span class="req">*</span></h2>
+          <span class="help">Pick what fits best.</span>
+          <div class="opts">
+            <label class="choice"><input type="radio" name="q10" value="Medicine / healthcare"><span>Medicine / healthcare</span></label>
+            <label class="choice"><input type="radio" name="q10" value="Science / research"><span>Science / research</span></label>
+            <label class="choice"><input type="radio" name="q10" value="Computer science / tech / data"><span>Computer science / tech / data</span></label>
+            <label class="choice"><input type="radio" name="q10" value="Business / management"><span>Business / management</span></label>
+            <label class="choice"><input type="radio" name="q10" value="Student"><span>Student</span></label>
+            <label class="choice"><input type="radio" name="q10" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline">Something else:&nbsp;<input type="text" class="other-text" name="q10_other" aria-label="Something else, please specify"></span></label>
+          </div>
+          <p class="err">Please pick one.</p>
+        </div>
+
+        <div class="q" data-name="q11" data-required="radio">
+          <h2>How did you hear about the event? <span class="req">*</span></h2>
+          <div class="opts">
+            <label class="choice"><input type="radio" name="q11" value="A friend or colleague"><span>A friend or colleague</span></label>
+            <label class="choice"><input type="radio" name="q11" value="LinkedIn"><span>LinkedIn</span></label>
+            <label class="choice"><input type="radio" name="q11" value="Instagram"><span>Instagram</span></label>
+            <label class="choice"><input type="radio" name="q11" value="Luma"><span>Luma</span></label>
+            <label class="choice"><input type="radio" name="q11" value="TUM / university channels"><span>TUM / university channels</span></label>
+            <label class="choice"><input type="radio" name="q11" value="A flyer or poster"><span>A flyer or poster</span></label>
+            <label class="choice"><input type="radio" name="q11" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline">Somewhere else:&nbsp;<input type="text" class="other-text" name="q11_other" aria-label="Somewhere else, please specify"></span></label>
+          </div>
+          <p class="err">Please pick one.</p>
+        </div>
+      </div>
+
       <button type="submit">Send · see you Monday</button>
     </form>
 
@@ -221,25 +266,24 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
 <script>
 /* ── Response backend ─────────────────────────────────────────────────────
    Responses are POSTed into a Google Form (→ its linked Google Sheet).
-   One-time hookup:
-   1. Create a Google Form with 9 PARAGRAPH questions titled q1…q8 + q5b
-      (plain text sinks — this page does all the real UI and validation).
-   2. Open the form's ⋮ menu → "Get pre-filled link", type the question
-      title into each field, generate the link. It contains
-      entry.123456789=q1 etc. — copy each number below.
-   3. formId = the long id in the form's /viewform URL (starts "1FAIpQLS…").
-   Until this is filled in, the page shows a warning and won't lose data
-   silently — the submit button alerts instead. */
+   The sink form has one PARAGRAPH item per key below; entry ids come from
+   comms/build-google-form.gs → updateBackendSink(), which logs a ready-to-
+   paste config block. Until q9–q11 have ids, the About-you section stays
+   hidden so no answer can be silently dropped. */
 const GOOGLE_FORM = {
   formId: "1FAIpQLSf6ZlAu2lVtTo4E7OBji87sjelDyEYPDh4z2f0J-txy2mCFiQ",
-  entries: { q1:"1269797347", q2:"63232851", q3:"1334559706", q4:"199883023", q5:"1071736515", q5b:"793219402", q6:"57041730", q7:"1347439415", q8:"1473181235" }
+  entries: { q1:"1269797347", q2:"63232851", q3:"1334559706", q4:"199883023", q5:"1071736515", q5b:"793219402", q6:"57041730", q7:"1347439415", q8:"1473181235",
+             q9:"", q10:"", q11:"" }
 };
 /* ───────────────────────────────────────────────────────────────────────── */
 
 const $  = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
-const configured = GOOGLE_FORM.formId && Object.values(GOOGLE_FORM.entries).every(Boolean);
+const CORE_KEYS = ["q1","q2","q3","q4","q5","q5b","q6","q7","q8"];
+const configured = GOOGLE_FORM.formId && CORE_KEYS.every(k => GOOGLE_FORM.entries[k]);
 if (!configured) $("#config-warning").style.display = "block";
+const aboutWired = ["q9","q10","q11"].every(k => GOOGLE_FORM.entries[k]);
+if (!aboutWired) $("#about-you").style.display = "none";
 
 /* Branching: apps section only for trackers (hide only — never discard typed answers) */
 $$('input[name=q3]').forEach(r => r.addEventListener('change', () => {
@@ -257,6 +301,11 @@ $('input[name=q2_other]').addEventListener('input', e => {
   const box = e.target.closest('label').querySelector('input[type=checkbox]');
   if (e.target.value.trim() && !box.disabled) { box.checked = true; box.dispatchEvent(new Event('change')); }
 });
+
+/* q10/q11: typing in the "else" field ticks its radio */
+["q10","q11"].forEach(n => $(`input[name=${n}_other]`).addEventListener('input', e => {
+  if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
+}));
 
 /* Q6: "Nobody" is exclusive */
 $$('input[name=q6]').forEach(c => c.addEventListener('change', () => {
@@ -279,6 +328,13 @@ function collect() {
   val.q6 = $$('input[name=q6]:checked').map(b => b.value).join("; ");
   val.q7 = ($('input[name=q7]:checked') || {}).value || "";
   val.q8 = ($('input[name=q8]:checked') || {}).value || "";
+  const radioOrElse = (n, label) => {
+    const v = ($(`input[name=${n}]:checked`) || {}).value || "";
+    return v === "__other__" ? label + ": " + $(`input[name=${n}_other]`).value.trim() : v;
+  };
+  val.q9  = ($('input[name=q9]:checked') || {}).value || "";
+  val.q10 = radioOrElse("q10", "Something else");
+  val.q11 = radioOrElse("q11", "Somewhere else");
   return val;
 }
 
@@ -286,7 +342,9 @@ function validate(val) {
   let firstBad = null;
   $$('.q').forEach(q => {
     const name = q.dataset.name, kind = q.dataset.required;
-    if (!kind || q.closest('#branch-apps') && !$("#branch-apps").classList.contains("show")) { q.classList.remove('invalid'); return; }
+    const hidden = (q.closest('#branch-apps') && !$("#branch-apps").classList.contains("show"))
+                || (q.closest('#about-you') && !aboutWired);
+    if (!kind || hidden) { q.classList.remove('invalid'); return; }
     const ok = kind === "text" ? !!val[name] : !!val[name];
     q.classList.toggle('invalid', !ok);
     if (!ok && !firstBad) firstBad = q;
@@ -301,7 +359,7 @@ $("#survey").addEventListener("submit", e => {
   if (!validate(val)) return;
   if (!configured) { alert("This form isn't connected to the response sheet yet (GOOGLE_FORM in the page source is empty)."); return; }
   const body = new URLSearchParams();
-  for (const [k, id] of Object.entries(GOOGLE_FORM.entries)) if (val[k]) body.append("entry." + id, val[k]);
+  for (const [k, id] of Object.entries(GOOGLE_FORM.entries)) if (id && val[k]) body.append("entry." + id, val[k]);
   fetch(`https://docs.google.com/forms/d/e/${GOOGLE_FORM.formId}/formResponse`,
         { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
     .finally(() => { $("#form-view").style.display = "none"; $("#thanks").style.display = "block"; window.scrollTo(0, 0); });
