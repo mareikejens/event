@@ -241,15 +241,9 @@ const $$ = s => [...document.querySelectorAll(s)];
 const configured = GOOGLE_FORM.formId && Object.values(GOOGLE_FORM.entries).every(Boolean);
 if (!configured) $("#config-warning").style.display = "block";
 
-/* Branching: apps section only for trackers */
+/* Branching: apps section only for trackers (hide only — never discard typed answers) */
 $$('input[name=q3]').forEach(r => r.addEventListener('change', () => {
-  const show = r.dataset.branch === "yes";
-  $("#branch-apps").classList.toggle("show", show);
-  if (!show) {
-    $('input[name=q4]').value = "";
-    $$('input[name=q5]').forEach(x => x.checked = false);
-    $('textarea[name=q5b]').value = "";
-  }
+  $("#branch-apps").classList.toggle("show", r.dataset.branch === "yes");
 }));
 
 /* Q2: max 3 */
@@ -278,10 +272,10 @@ function collect() {
     b.value === "__other__" ? "Something else: " + $('input[name=q2_other]').value.trim() : b.value
   ).join("; ");
   val.q3 = ($('input[name=q3]:checked') || {}).value || "";
-  const tracker = $("#branch-apps").classList.contains("show");
-  val.q4  = tracker ? $('input[name=q4]').value.trim() : "";
-  val.q5  = tracker ? (($('input[name=q5]:checked') || {}).value || "") : "";
-  val.q5b = tracker ? $('textarea[name=q5b]').value.trim() : "";
+  // Always submit whatever was filled, even if the branch is currently hidden
+  val.q4  = $('input[name=q4]').value.trim();
+  val.q5  = ($('input[name=q5]:checked') || {}).value || "";
+  val.q5b = $('textarea[name=q5b]').value.trim();
   val.q6 = $$('input[name=q6]:checked').map(b => b.value).join("; ");
   val.q7 = ($('input[name=q7]:checked') || {}).value || "";
   val.q8 = ($('input[name=q8]:checked') || {}).value || "";
