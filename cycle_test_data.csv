@@ -4,89 +4,107 @@ date,period_flow,symptoms,mood
 2026-01-03,medium,cramps,okay
 2026-01-04,light,,good
 2026-01-05,spotting,low energy,okay
-2026-01-19,,,okay
-2026-01-22,,,good
-2026-01-23,,,good
-2026-01-24,,poor sleep,okay
-2026-01-25,,bloating,okay
-2026-01-26,,sore breasts,low
-2026-01-28,,,low
+2026-01-13,,,great
+2026-01-14,,,good
+2026-01-17,,,okay
+2026-01-18,,,okay
+2026-01-19,,,good
+2026-01-20,,,good
+2026-01-24,,bloating,okay
+2026-01-26,,headache,okay
+2026-01-27,,,low
+2026-01-28,,bloating,low
 2026-01-29,heavy,low energy,okay
-2026-01-30,heavy,,low
+2026-01-30,heavy,backache,low
 2026-01-31,medium,,okay
 2026-02-01,light,,okay
 2026-02-02,spotting,,okay
+2026-02-04,,,okay
 2026-02-05,,,okay
-2026-02-06,,,okay
-2026-02-08,,,okay
-2026-02-10,,,good
-2026-02-12,,,good
-2026-02-13,,high energy,good
-2026-02-15,,,good
-2026-02-16,,,okay
-2026-02-23,,cravings,low
-2026-02-24,,sore breasts,irritable
-2026-02-25,,headache,irritable
-2026-02-26,,headache,low
-2026-02-27,heavy,,low
-2026-02-28,heavy,,okay
-2026-03-01,medium,low energy,good
-2026-03-02,light,,good
+2026-02-07,,,okay
+2026-02-09,,,good
+2026-02-10,,high energy,okay
+2026-02-11,,high energy,great
+2026-02-12,,high energy,great
+2026-02-13,,,good
+2026-02-14,,,okay
+2026-02-18,,,okay
+2026-02-19,,,good
+2026-02-21,,,good
+2026-02-24,,cravings,low
+2026-02-26,,bloating,okay
+2026-02-27,heavy,backache,okay
+2026-02-28,heavy,backache,low
+2026-03-01,medium,headache,okay
+2026-03-02,light,,okay
 2026-03-03,spotting,,okay
+2026-03-05,,,good
+2026-03-09,,high energy,good
 2026-03-10,,,great
-2026-03-12,,,great
+2026-03-12,,high energy,great
+2026-03-14,,,okay
 2026-03-16,,poor sleep,stressed
-2026-03-17,,poor sleep,stressed
-2026-03-18,,,low
+2026-03-17,,,stressed
+2026-03-18,,,stressed
 2026-03-19,,poor sleep,stressed
-2026-03-22,,poor sleep,low
-2026-03-23,,cravings,low
-2026-03-24,,bloating,irritable
-2026-03-26,heavy,,okay
-2026-03-27,heavy,backache; low energy,okay
+2026-03-20,,,stressed
+2026-03-21,,poor sleep,stressed
+2026-03-22,,sore breasts,stressed
+2026-03-23,,sore breasts,irritable
+2026-03-24,,poor sleep,irritable
+2026-03-25,,headache,okay
+2026-03-26,heavy,headache,okay
+2026-03-27,heavy,,low
 2026-03-28,medium,,good
-2026-03-29,light,,good
-2026-03-30,spotting,,okay
-2026-04-01,,,great
-2026-04-14,,,okay
+2026-03-29,light,,okay
+2026-03-30,spotting,low energy,good
+2026-04-06,,,great
+2026-04-08,,increased libido,okay
+2026-04-09,,high energy; increased libido,great
+2026-04-10,,high energy; increased libido,good
+2026-04-11,,high energy; increased libido,good
 2026-04-15,,,okay
-2026-04-16,,,good
 2026-04-18,,,okay
-2026-04-20,,headache,low
-2026-04-21,,headache,okay
-2026-04-23,,cravings,low
-2026-04-25,heavy,backache,low
-2026-04-26,heavy,backache; cramps,okay
-2026-04-27,medium,cramps,good
-2026-04-28,light,,good
-2026-04-29,spotting,,good
-2026-05-02,,,great
-2026-05-07,,high energy,good
-2026-05-08,,high energy,great
-2026-05-09,,,good
-2026-05-16,,,okay
-2026-05-18,,bloating,good
-2026-05-19,,cravings,okay
-2026-05-20,,bloating,okay
-2026-05-21,,poor sleep,low
-2026-05-22,,,irritable
+2026-04-20,,poor sleep,okay
+2026-04-21,,headache,good
+2026-04-23,,bloating,low
+2026-04-24,,,low
+2026-04-25,heavy,low energy,low
+2026-04-26,heavy,,low
+2026-04-27,medium,backache,okay
+2026-04-28,light,low energy,okay
+2026-04-29,spotting,low energy,okay
+2026-05-03,,,good
+2026-05-06,,high energy; increased libido,okay
+2026-05-07,,high energy; increased libido,good
+2026-05-08,,high energy,good
+2026-05-09,,increased libido,great
+2026-05-17,,,okay
+2026-05-19,,,okay
+2026-05-20,,,low
+2026-05-21,,headache,low
+2026-05-22,,,low
 2026-05-23,heavy,,okay
-2026-05-24,heavy,backache; headache,low
-2026-05-25,medium,,okay
-2026-05-26,light,low energy,okay
-2026-05-27,spotting,low energy,okay
-2026-05-30,,,good
-2026-06-01,,,good
-2026-06-02,,,good
-2026-06-05,,,great
-2026-06-10,,,okay
-2026-06-16,,headache,okay
-2026-06-18,,sore breasts,okay
-2026-06-19,,bloating,low
-2026-06-20,,poor sleep,irritable
-2026-06-21,heavy,headache,low
-2026-06-22,heavy,low energy; backache,low
-2026-06-23,medium,cramps,okay
+2026-05-24,heavy,cramps,okay
+2026-05-25,medium,,good
+2026-05-26,light,,okay
+2026-05-27,spotting,,okay
+2026-06-02,,,okay
+2026-06-03,,,good
+2026-06-04,,,okay
+2026-06-05,,high energy,great
+2026-06-06,,high energy,great
+2026-06-07,,increased libido,good
+2026-06-12,,,okay
+2026-06-16,,sore breasts,good
+2026-06-17,,sore breasts,good
+2026-06-18,,sore breasts,irritable
+2026-06-20,,bloating,okay
+2026-06-21,heavy,,okay
+2026-06-22,heavy,,okay
+2026-06-23,medium,,good
 2026-06-24,light,,good
-2026-06-25,spotting,low energy,good
+2026-06-25,spotting,,okay
+2026-06-26,,,good
+2026-06-27,,,good
 2026-06-30,,,okay
