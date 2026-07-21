@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How was it? · 3 minutes, then your instruction guide · AI × Women's Health</title>
+<meta name="description" content="Post-event survey for Understand Your Hormones with AI, 20 July 2026, TranslaTUM Munich. Three minutes — then you get the instruction guide for analyzing your own data at home.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400..800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf5ef; --surface:#fff; --fg:#1e1826; --fg-dim:#6e6478;
+  --heading:#3a2359; --accent:#c04a7e; --accent-2:#ec9159;
+  --line:#e2d8cc; --pink-tint:#faecf2; --orange-tint:#fbeadd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--fg);
+  font-family:"Syne",ui-sans-serif,system-ui,sans-serif;
+  -webkit-font-smoothing:antialiased; line-height:1.5;
+}
+main{max-width:44rem;margin:0 auto;padding:4rem 1.25rem 5rem}
+.kicker{
+  font-family:"JetBrains Mono",monospace; font-size:.75rem;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--accent);
+}
+h1{margin-top:.75rem;font-size:2.25rem;font-weight:700;line-height:1.15;color:var(--heading)}
+h1 .pink{color:var(--accent)}
+.intro{margin-top:1rem;color:var(--fg-dim);font-size:1.05rem}
+.note-box{
+  margin-top:1.5rem;border:1px solid var(--accent);background:var(--pink-tint);
+  border-radius:.5rem;padding:.9rem 1.1rem;font-size:1rem;
+}
+.section-label{
+  margin:2.75rem 0 1rem; font-family:"JetBrains Mono",monospace;
+  font-size:.75rem; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-dim);
+  display:flex; align-items:center; gap:.75rem;
+}
+.section-label::after{content:"";flex:1;height:1px;background:var(--line)}
+.q{
+  background:var(--surface); border:1px solid var(--line); border-radius:.5rem;
+  padding:1.5rem 1.5rem 1.4rem; margin-top:1rem;
+}
+.q.invalid{border-color:var(--accent)}
+.q h2{font-size:1.1rem;font-weight:700;color:var(--heading)}
+.req{color:var(--accent)}
+.opt,.help{font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fg-dim)}
+.help{display:block;margin-top:.35rem}
+.opts{margin-top:1rem;display:grid;gap:.5rem}
+label.choice{
+  display:flex;align-items:flex-start;gap:.7rem;cursor:pointer;
+  border:1px solid var(--line);border-radius:.375rem;padding:.65rem .85rem;
+  transition:border-color .12s, background-color .12s; font-size:.95rem;
+}
+label.choice:hover{border-color:var(--accent)}
+label.choice:has(:checked){border-color:var(--accent);background:var(--pink-tint)}
+input[type=radio],input[type=checkbox]{
+  appearance:none;flex:none;width:1.05rem;height:1.05rem;margin-top:.15rem;
+  border:2px solid var(--fg-dim);background:var(--surface);cursor:pointer;
+}
+input[type=radio]{border-radius:50%}
+input[type=checkbox]{border-radius:.2rem}
+input[type=radio]:checked,input[type=checkbox]:checked{
+  border-color:var(--accent);background:var(--accent);
+  box-shadow:inset 0 0 0 2.5px var(--surface);
+}
+input[type=checkbox]:checked{box-shadow:inset 0 0 0 2px var(--surface)}
+textarea,input[type=text],input[type=email]{
+  width:100%;margin-top:1rem;font:inherit;font-size:.95rem;color:var(--fg);
+  background:var(--surface);border:1px solid var(--line);border-radius:.375rem;
+  padding:.7rem .85rem;
+}
+textarea{min-height:5.5rem;resize:vertical}
+textarea:focus,input[type=text]:focus,input[type=email]:focus{outline:2px solid var(--accent);outline-offset:-1px;border-color:var(--accent)}
+input.other-text{margin-top:0;padding:.2rem .5rem;border-width:0 0 1px;border-radius:0;flex:1}
+.err{display:none;margin-top:.7rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--accent)}
+.q.invalid .err{display:block}
+/* 0–10 scale (Q1) */
+.scale{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
+.scale label{
+  flex:1 0 2.4rem;cursor:pointer;text-align:center;
+  border:1px solid var(--line);border-radius:.375rem;padding:.6rem 0;
+  font-family:"JetBrains Mono",monospace;font-size:.9rem;
+  transition:border-color .12s, background-color .12s;
+}
+.scale label:hover{border-color:var(--accent)}
+.scale label:has(:checked){border-color:var(--accent);background:var(--accent);color:#fff;font-weight:700}
+.scale label:has(:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
+.scale input{position:absolute;opacity:0;width:0;height:0}
+.scale-ends{display:flex;justify-content:space-between;margin-top:.45rem;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--fg-dim);gap:1rem}
+#quote-consent,#branch-home{display:none}
+#quote-consent.show,#branch-home.show{display:block}
+button[type=submit]{
+  margin-top:2.5rem;width:100%;cursor:pointer;
+  background:var(--accent-2);color:var(--fg);border:none;border-radius:.375rem;
+  font:inherit;font-weight:600;font-size:1.05rem;padding:.9rem 1.5rem;
+}
+button[type=submit]:hover{opacity:.9}
+footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;color:var(--fg-dim);text-align:center}
+#thanks{display:none;text-align:center;padding:5rem 0}
+#thanks h1{font-size:2rem}
+#thanks p{margin-top:1rem;color:var(--fg-dim)}
+.guide-cta{
+  display:inline-block;margin-top:2rem;background:var(--accent-2);color:var(--fg);
+  border-radius:.375rem;font-weight:700;font-size:1.05rem;padding:.9rem 1.75rem;
+  text-decoration:none;
+}
+.guide-cta:hover{opacity:.9}
+#already{
+  display:none;margin-top:1rem;border:1px solid var(--line);
+  background:var(--surface);border-radius:.375rem;padding:.8rem 1rem;
+  font-size:.9rem;
+}
+#config-warning{
+  display:none;margin-top:1.5rem;border:1px solid var(--accent-2);
+  background:var(--orange-tint);border-radius:.375rem;padding:.8rem 1rem;
+  font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--fg);
+}
+@media(min-width:48rem){h1{font-size:2.75rem}}
+</style>
+</head>
+<body>
+<main>
+  <div id="form-view">
+    <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health · Post-event survey</p>
+    <h1>How was it? <span class="pink">3&nbsp;minutes,</span> then your guide.</h1>
+    <p class="intro">That was <strong>Understand Your Hormones with AI</strong> (Mon 20 July, TranslaTUM Munich) — thank you for being in the room. 💜</p>
+    <div class="note-box">📖 Complete this survey and you'll receive your <strong>instruction guide on how to analyze your own data at home</strong> — the full workshop flow, step by step, ready for when your export arrives. We're putting the final touches on it; the thank-you page shows you where to find it.</div>
+    <p class="intro" style="margin-top:1rem">Anonymous — unless you choose to leave your email at the very end, nothing here is tied to you.</p>
+
+    <div id="already">✅ You've already filled this in — <a href="../workshop/" style="color:var(--accent);font-weight:600;text-decoration:underline">go straight to your instruction guide →</a></div>
+
+    <div id="config-warning">⚠ Not connected to a response sheet yet: submissions go nowhere. Fill in GOOGLE_FORM in the page source before sharing this link.</div>
+
+    <form id="survey" novalidate>
+
+      <p class="section-label">The verdict</p>
+
+      <div class="q" data-name="q1" data-required="radio">
+        <h2>How likely are you to recommend an evening like this to a friend? <span class="req">*</span></h2>
+        <div class="scale">
+          <label><input type="radio" name="q1" value="0"><span>0</span></label>
+          <label><input type="radio" name="q1" value="1"><span>1</span></label>
+          <label><input type="radio" name="q1" value="2"><span>2</span></label>
+          <label><input type="radio" name="q1" value="3"><span>3</span></label>
+          <label><input type="radio" name="q1" value="4"><span>4</span></label>
+          <label><input type="radio" name="q1" value="5"><span>5</span></label>
+          <label><input type="radio" name="q1" value="6"><span>6</span></label>
+          <label><input type="radio" name="q1" value="7"><span>7</span></label>
+          <label><input type="radio" name="q1" value="8"><span>8</span></label>
+          <label><input type="radio" name="q1" value="9"><span>9</span></label>
+          <label><input type="radio" name="q1" value="10"><span>10</span></label>
+        </div>
+        <div class="scale-ends"><span>0 · not my thing</span><span>10 · will definitely do / already told them</span></div>
+        <p class="err">Please pick a number.</p>
+      </div>
+
+      <div class="q" data-name="q2" data-required="checkbox">
+        <h2>What are you actually taking home? <span class="req">*</span></h2>
+        <span class="help">Tick everything that's true.</span>
+        <div class="opts">
+          <label class="choice"><input type="checkbox" name="q2" value="I understand the cycle better than before"><span>I understand the cycle better than before</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="I know better which data exists (and doesn't exist yet) around the menstrual cycle"><span>I know better which data exists (and doesn't exist yet) around the menstrual cycle</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="I got more confident at using AI for data analytics"><span>I got more confident at using AI for data analytics</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="People I want to stay in touch with"><span>People I want to stay in touch with</span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline;flex-wrap:wrap">Something else:&nbsp;<input type="text" class="other-text" name="q2_other" aria-label="Something else, please specify"></span></label>
+          <label class="choice"><input type="checkbox" name="q2" value="Honestly? Not much" data-exclusive><span>Honestly? Not much <span class="opt">(then the "be honest" part below matters twice as much)</span></span></label>
+        </div>
+        <p class="err">Please tick at least one ("Honestly? Not much" counts).</p>
+      </div>
+
+      <div class="q" data-name="q3" data-required="text">
+        <h2>Your highlight of the evening? <span class="req">*</span></h2>
+        <span class="help">A talk, a moment, an aha, a person — whatever stuck.</span>
+        <input type="text" name="q3" placeholder="My highlight…">
+        <p class="err">One word is enough.</p>
+      </div>
+
+      <p class="section-label">Be honest</p>
+
+      <div class="q" data-name="q4" data-required="checkbox">
+        <h2>Anything that got in the way? <span class="req">*</span></h2>
+        <span class="help">Tick all that applied to you.</span>
+        <div class="opts">
+          <label class="choice"><input type="checkbox" name="q4" value="Workshop moved too fast"><span>Workshop moved too fast</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Workshop moved too slow"><span>Workshop moved too slow</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Too technical for me"><span>Too technical for me</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Not deep enough for me"><span>Not deep enough for me</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="I got stuck and couldn't get back in"><span>I got stuck and couldn't get back in</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="AI account or tech trouble (logins, uploads, limits)"><span>AI account or tech trouble (logins, uploads, limits)</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Hard to hear or see"><span>Hard to hear or see</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Room, seating or temperature"><span>Room, seating or temperature</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Timing (start, length, day of week)"><span>Timing (start, length, day of week)</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Nothing major, honestly" data-exclusive><span>Nothing major, honestly</span></label>
+        </div>
+        <p class="err">Please tick at least one ("Nothing major" counts).</p>
+      </div>
+
+      <div class="q" data-name="q5" data-required="text">
+        <h2>If we ran this again next month: what's the one thing we should change? <span class="req">*</span></h2>
+        <span class="help">Be blunt. Praise is lovely, but this answer is where the next event gets better. "Nothing" is allowed — if it's true.</span>
+        <textarea name="q5" placeholder="Change this…"></textarea>
+        <p class="err">This is the one we really read — one honest sentence, please.</p>
+      </div>
+
+      <p class="section-label">Your data, at home</p>
+
+      <div class="q" data-name="q6" data-required="radio">
+        <h2>Do you want to repeat the analysis on your own data? <span class="req">*</span></h2>
+        <span class="help">The same flow from the workshop — at home, on your real history.</span>
+        <div class="opts">
+          <label class="choice"><input type="radio" name="q6" value="Yes — that's the plan" data-branch="yes"><span>Yes — that's the plan</span></label>
+          <label class="choice"><input type="radio" name="q6" value="Maybe — depends how hard it is" data-branch="yes"><span>Maybe — depends how hard it is</span></label>
+          <label class="choice"><input type="radio" name="q6" value="No — the evening was enough for me"><span>No — the evening was enough for me</span></label>
+        </div>
+        <p class="err">Please pick one.</p>
+      </div>
+
+      <div id="branch-home">
+        <div class="q" data-name="q6b" data-required="radio">
+          <h2>Have you requested your data export yet? <span class="req">*</span></h2>
+          <span class="help">The GDPR request from the workshop — your app has 30 days to deliver.</span>
+          <div class="opts">
+            <label class="choice"><input type="radio" name="q6b" value="Done — request already sent"><span>Done — request already sent</span></label>
+            <label class="choice"><input type="radio" name="q6b" value="Doing it this week"><span>Doing it this week</span></label>
+            <label class="choice"><input type="radio" name="q6b" value="Not yet — I'll need the guide first"><span>Not yet — I'll need the guide first</span></label>
+            <label class="choice"><input type="radio" name="q6b" value="Wait, what export?"><span>Wait, what export? <span class="opt">(it's in your guide — one more reason to finish this page)</span></span></label>
+          </div>
+          <p class="err">Please pick one.</p>
+        </div>
+      </div>
+
+      <p class="section-label">Before you go</p>
+
+      <div class="q" data-name="q7">
+        <h2>Sum the evening up in one sentence — the version you'd text a friend. <span class="opt">optional</span></h2>
+        <textarea name="q7" placeholder="It was…"></textarea>
+      </div>
+
+      <div id="quote-consent">
+        <div class="q" data-name="q7b" data-required="radio">
+          <h2>May we use your sentence on our channels? <span class="req">*</span></h2>
+          <span class="help">Instagram, LinkedIn, the next event page. Your call.</span>
+          <div class="opts">
+            <label class="choice"><input type="radio" name="q7b" value="__firstname__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline;flex-wrap:wrap">Yes, with my first name:&nbsp;<input type="text" class="other-text" name="q7b_name" aria-label="Your first name"></span></label>
+            <label class="choice"><input type="radio" name="q7b" value="Yes, anonymously"><span>Yes, anonymously</span></label>
+            <label class="choice"><input type="radio" name="q7b" value="No — it's just for you"><span>No — it's just for you</span></label>
+          </div>
+          <p class="err">Please tell us if we may share it.</p>
+        </div>
+      </div>
+
+      <div class="q" data-name="q8" data-required="checkbox">
+        <h2>What should exist after this evening? <span class="req">*</span></h2>
+        <span class="help">We'll genuinely build what gets ticked most.</span>
+        <div class="opts">
+          <label class="choice"><input type="checkbox" name="q8" value="A follow-up workshop — same crowd, deeper into AI"><span>A follow-up workshop — same crowd, deeper into AI</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="The same evening again — for a friend who missed it"><span>The same evening again — for a friend who missed it</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="A regular meetup, every few months"><span>A regular meetup, every few months</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="A group chat to share findings and questions"><span>A group chat to share findings and questions</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="A deep-dive on perimenopause & menopause"><span>A deep-dive on perimenopause &amp; menopause</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="Bea's cycle study (Vorstudie) — send me the info"><span>Bea's cycle study (Vorstudie) — send me the info</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="Nothing for now" data-exclusive><span>Nothing for now</span></label>
+        </div>
+        <p class="err">Please tick at least one ("Nothing for now" counts).</p>
+      </div>
+
+      <div class="q" data-name="q9">
+        <h2>Where do we reach you when it happens? <span class="opt">optional</span></h2>
+        <span class="help">Only used for what you ticked above — no newsletter, no spam. Leaving it blank keeps this survey 100% anonymous.</span>
+        <input type="email" name="q9" placeholder="you@example.com" autocomplete="email">
+        <p class="err">That doesn't look like an email address — or leave it blank.</p>
+      </div>
+
+      <button type="submit">Send · get my instruction guide</button>
+    </form>
+
+    <footer>Understand Your Hormones with AI · 20 July 2026 · TranslaTUM Munich</footer>
+  </div>
+
+  <div id="thanks">
+    <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health</p>
+    <h1>Thank you! <span class="pink">💜</span> Your guide is on its way.</h1>
+    <p>We're putting the final touches on your instruction guide — everything from the workshop, ready to rerun at home on your own data: prompts, expected results, the export walkthrough, and the no-AI mini-app. It lives at the link below.</p>
+    <a class="guide-cta" href="../workshop/">Bookmark your instruction guide →</a>
+    <p style="margin-top:1.5rem;font-size:.9rem">No rush: your data export can take up to 30 days to arrive — the finished guide will be waiting long before that.</p>
+  </div>
+</main>
+
+<script>
+/* ── Response backend ─────────────────────────────────────────────────────
+   Responses are POSTed into a Google Form (→ its linked Google Sheet).
+   The sink form has one PARAGRAPH item per key below; entry ids come from
+   comms/build-post-event-form.gs → createPostEventSink(), which logs a
+   ready-to-paste config block. Until it's filled in, the page shows the
+   warning banner and refuses to submit (so no answer is silently lost). */
+const GOOGLE_FORM = {
+  formId: "",
+  entries: { q1:"", q2:"", q3:"", q4:"", q5:"", q6:"", q6b:"", q7:"", q7b:"", q8:"", q9:"" }
+};
+/* ───────────────────────────────────────────────────────────────────────── */
+
+const $  = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const KEYS = Object.keys(GOOGLE_FORM.entries);
+const configured = GOOGLE_FORM.formId && KEYS.every(k => GOOGLE_FORM.entries[k]);
+if (!configured) $("#config-warning").style.display = "block";
+
+/* Returning visitor: guide already unlocked */
+try { if (localStorage.getItem("aixwh-feedback-done")) $("#already").style.display = "block"; } catch (e) {}
+
+/* Exclusive checkboxes ("Honestly? Not much" / "Nothing major" / "Nothing for now") */
+$$('input[type=checkbox]').forEach(c => c.addEventListener('change', () => {
+  const group = $$(`input[type=checkbox][name=${c.name}]`);
+  const excl = group.find(b => b.hasAttribute('data-exclusive'));
+  if (!excl) return;
+  if (c === excl && excl.checked) group.forEach(b => { if (b !== excl) b.checked = false; });
+  else if (c.checked) excl.checked = false;
+}));
+
+/* Q2: typing in "Something else" ticks its box */
+$('input[name=q2_other]').addEventListener('input', e => {
+  const box = e.target.closest('label').querySelector('input[type=checkbox]');
+  if (e.target.value.trim() && !box.checked) { box.checked = true; box.dispatchEvent(new Event('change')); }
+});
+
+/* Export follow-up only for people who want to repeat the analysis
+   (hide only — never discard typed answers) */
+$$('input[name=q6]').forEach(r => r.addEventListener('change', () => {
+  $("#branch-home").classList.toggle("show", r.dataset.branch === "yes");
+}));
+
+/* Quote consent only appears once a sentence exists (hide only — never discard) */
+$('textarea[name=q7]').addEventListener('input', e => {
+  $("#quote-consent").classList.toggle("show", !!e.target.value.trim());
+});
+
+/* Typing a first name ticks its radio */
+$('input[name=q7b_name]').addEventListener('input', e => {
+  if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
+});
+
+function collect() {
+  const val = {};
+  val.q1 = ($('input[name=q1]:checked') || {}).value || "";
+  val.q2 = $$('input[name=q2]:checked').map(b =>
+    b.value === "__other__" ? "Something else: " + $('input[name=q2_other]').value.trim() : b.value
+  ).join("; ");
+  val.q3 = $('input[name=q3]').value.trim();
+  val.q4 = $$('input[name=q4]:checked').map(b => b.value).join("; ");
+  val.q5 = $('textarea[name=q5]').value.trim();
+  val.q6 = ($('input[name=q6]:checked') || {}).value || "";
+  // The export follow-up only counts when the branch applies ("No" = skipped)
+  const wantsHome = $("#branch-home").classList.contains("show");
+  val.q6b = wantsHome ? (($('input[name=q6b]:checked') || {}).value || "") : "";
+  val.q7 = $('textarea[name=q7]').value.trim();
+  const consent = ($('input[name=q7b]:checked') || {}).value || "";
+  val.q7b = !val.q7 ? "" :
+    consent === "__firstname__" ? "Yes, with my first name: " + $('input[name=q7b_name]').value.trim() : consent;
+  val.q8 = $$('input[name=q8]:checked').map(b => b.value).join("; ");
+  val.q9 = $('input[name=q9]').value.trim();
+  return val;
+}
+
+function validate(val) {
+  let firstBad = null;
+  $$('.q').forEach(q => {
+    const name = q.dataset.name, kind = q.dataset.required;
+    let ok = true;
+    if (kind) {
+      const hidden = (q.closest('#quote-consent') && !$("#quote-consent").classList.contains("show"))
+                  || (q.closest('#branch-home') && !$("#branch-home").classList.contains("show"));
+      ok = hidden || !!val[name];
+    }
+    if (name === "q9" && val.q9) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q9);
+    q.classList.toggle('invalid', !ok);
+    if (!ok && !firstBad) firstBad = q;
+  });
+  if (firstBad) firstBad.scrollIntoView({ behavior: "smooth", block: "center" });
+  return !firstBad;
+}
+
+$("#survey").addEventListener("submit", e => {
+  e.preventDefault();
+  const val = collect();
+  if (!validate(val)) return;
+  if (!configured) { alert("This form isn't connected to the response sheet yet (GOOGLE_FORM in the page source is empty)."); return; }
+  const body = new URLSearchParams();
+  for (const [k, id] of Object.entries(GOOGLE_FORM.entries)) if (id && val[k]) body.append("entry." + id, val[k]);
+  fetch(`https://docs.google.com/forms/d/e/${GOOGLE_FORM.formId}/formResponse`,
+        { method: "POST", mode: "no-cors", headers: { "Content-Type": "application/x-www-form-urlencoded" }, body })
+    .finally(() => {
+      try { localStorage.setItem("aixwh-feedback-done", "1"); } catch (err) {}
+      $("#form-view").style.display = "none"; $("#thanks").style.display = "block"; window.scrollTo(0, 0);
+    });
+});
+</script>
+</body>
+</html>
