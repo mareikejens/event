@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>How was it? · 3 minutes, then your instruction guide · AI × Women's Health</title>
-<meta name="description" content="Post-event survey for Understand Your Hormones with AI, 20 July 2026, TranslaTUM Munich. Three minutes — then you get the instruction guide for analyzing your own data at home.">
+<title>How was our event? · 3 minutes feedback · AI × Women's Health</title>
+<meta name="description" content="Post-event survey for Decoding the Menstrual Cycle, 20 July 2026, TranslaTUM Munich. Three minutes of feedback — then you receive the instruction guide for analyzing your own data at home.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -126,10 +126,10 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
 <main>
   <div id="form-view">
     <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health · Post-event survey</p>
-    <h1>How was it? <span class="pink">3&nbsp;minutes,</span> then your guide.</h1>
-    <p class="intro">That was <strong>Understand Your Hormones with AI</strong> (Mon 20 July, TranslaTUM Munich) — thank you for being in the room. 💜</p>
-    <div class="note-box">📖 Complete this survey and you'll receive your <strong>instruction guide on how to analyze your own data at home</strong> — the full workshop flow, step by step, ready for when your export arrives. We're putting the final touches on it; the thank-you page shows you where to find it.</div>
-    <p class="intro" style="margin-top:1rem">Anonymous — unless you choose to leave your email at the very end, nothing here is tied to you.</p>
+    <h1>How was our event? <span class="pink">3&nbsp;minutes</span> feedback.</h1>
+    <p class="intro">That was <strong>Decoding the Menstrual Cycle</strong> (Mon 20 July, TranslaTUM Munich). Thank you for being in the room. 💜</p>
+    <div class="note-box">📖 Complete this survey and you'll receive your <strong>instruction guide on how to analyze your own data at home</strong> — the full workshop flow, with step-by-step instructions for each of the AI options. We're putting the final touches on it and will share it with you after survey completion.</div>
+    <p class="intro" style="margin-top:1rem">Anonymous — unless you choose to leave your contact details at the very end, nothing here is tied to you.</p>
 
     <div id="already">✅ You've already filled this in — <a href="../workshop/" style="color:var(--accent);font-weight:600;text-decoration:underline">go straight to your instruction guide →</a></div>
 
@@ -257,34 +257,53 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <h2>What should exist after this evening? <span class="req">*</span></h2>
         <span class="help">We'll genuinely build what gets ticked most.</span>
         <div class="opts">
-          <label class="choice"><input type="checkbox" name="q8" value="A follow-up workshop — same crowd, deeper into AI"><span>A follow-up workshop — same crowd, deeper into AI</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="A follow-up workshop, but deeper into AI"><span>A follow-up workshop, but deeper into AI</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="A follow-up workshop, but deeper into menstrual cycle and hormones"><span>A follow-up workshop, but deeper into menstrual cycle and hormones</span></label>
+          <label class="choice"><input type="checkbox" name="q8" value="A follow-up workshop, but focused on menopause"><span>A follow-up workshop, but focused on menopause</span></label>
           <label class="choice"><input type="checkbox" name="q8" value="The same evening again — for a friend who missed it"><span>The same evening again — for a friend who missed it</span></label>
           <label class="choice"><input type="checkbox" name="q8" value="A regular meetup, every few months"><span>A regular meetup, every few months</span></label>
           <label class="choice"><input type="checkbox" name="q8" value="A group chat to share findings and questions"><span>A group chat to share findings and questions</span></label>
-          <label class="choice"><input type="checkbox" name="q8" value="A deep-dive on perimenopause & menopause"><span>A deep-dive on perimenopause &amp; menopause</span></label>
           <label class="choice"><input type="checkbox" name="q8" value="Bea's cycle study (Vorstudie) — send me the info"><span>Bea's cycle study (Vorstudie) — send me the info</span></label>
           <label class="choice"><input type="checkbox" name="q8" value="Nothing for now" data-exclusive><span>Nothing for now</span></label>
         </div>
         <p class="err">Please tick at least one ("Nothing for now" counts).</p>
       </div>
 
-      <div class="q" data-name="q9">
-        <h2>Where do we reach you when it happens? <span class="opt">optional</span></h2>
-        <span class="help">Only used for what you ticked above — no newsletter, no spam. Leaving it blank keeps this survey 100% anonymous.</span>
-        <input type="email" name="q9" placeholder="you@example.com" autocomplete="email">
-        <p class="err">That doesn't look like an email address — or leave it blank.</p>
+      <div class="q" data-name="q9" data-required="radio">
+        <h2>How did you find out about the event? <span class="req">*</span></h2>
+        <div class="opts">
+          <label class="choice"><input type="radio" name="q9" value="A friend or colleague"><span>A friend or colleague</span></label>
+          <label class="choice"><input type="radio" name="q9" value="LinkedIn"><span>LinkedIn</span></label>
+          <label class="choice"><input type="radio" name="q9" value="Instagram"><span>Instagram</span></label>
+          <label class="choice"><input type="radio" name="q9" value="Luma"><span>Luma</span></label>
+          <label class="choice"><input type="radio" name="q9" value="TUM / university channels"><span>TUM / university channels</span></label>
+          <label class="choice"><input type="radio" name="q9" value="WhatsApp"><span>WhatsApp</span></label>
+          <label class="choice"><input type="radio" name="q9" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline">Somewhere else:&nbsp;<input type="text" class="other-text" name="q9_other" aria-label="Somewhere else, please specify"></span></label>
+        </div>
+        <p class="err">Please pick one.</p>
+      </div>
+
+      <div class="q" data-name="q10">
+        <h2>Last one: may we get back to you? <span class="opt">optional</span></h2>
+        <span class="help">The instruction guide, follow-ups on the topics you ticked above, future events — nothing else, no newsletter, no spam. Leaving it blank keeps this survey 100% anonymous.</span>
+        <div class="opts">
+          <label class="choice"><input type="checkbox" name="q10" id="q10-consent" value="yes"><span>Yes, you may contact me — with the instruction guide, follow-ups on the topics I ticked above, and future events.</span></label>
+        </div>
+        <input type="text" name="q10_name" placeholder="Your name" autocomplete="name">
+        <input type="email" name="q10_email" placeholder="you@example.com" autocomplete="email">
+        <p class="err">To get back to you we need all three — the tick, your name and a valid email. Or leave the whole block blank.</p>
       </div>
 
       <button type="submit">Send · get my instruction guide</button>
     </form>
 
-    <footer>Understand Your Hormones with AI · 20 July 2026 · TranslaTUM Munich</footer>
+    <footer>Decoding the Menstrual Cycle · 20 July 2026 · TranslaTUM Munich</footer>
   </div>
 
   <div id="thanks">
     <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health</p>
     <h1>Thank you! <span class="pink">💜</span> Your guide is on its way.</h1>
-    <p>We're putting the final touches on your instruction guide — everything from the workshop, ready to rerun at home on your own data: prompts, expected results, the export walkthrough, and the no-AI mini-app. It lives at the link below.</p>
+    <p>We're putting the final touches on your instruction guide — everything from the workshop, ready to rerun at home on your own data: prompts, expected results, the export walkthrough, and the no-AI mini-app. If you left your contact details, it will land in your inbox as soon as it's ready — and either way, it lives at the link below.</p>
     <a class="guide-cta" href="../workshop/">Bookmark your instruction guide →</a>
     <p style="margin-top:1.5rem;font-size:.9rem">No rush: your data export can take up to 30 days to arrive — the finished guide will be waiting long before that.</p>
   </div>
@@ -299,7 +318,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
    warning banner and refuses to submit (so no answer is silently lost). */
 const GOOGLE_FORM = {
   formId: "",
-  entries: { q1:"", q2:"", q3:"", q4:"", q5:"", q6:"", q6b:"", q7:"", q7b:"", q8:"", q9:"" }
+  entries: { q1:"", q2:"", q3:"", q4:"", q5:"", q6:"", q6b:"", q7:"", q7b:"", q8:"", q9:"", q10:"", q10b:"", q10c:"" }
 };
 /* ───────────────────────────────────────────────────────────────────────── */
 
@@ -343,6 +362,11 @@ $('input[name=q7b_name]').addEventListener('input', e => {
   if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
 });
 
+/* Q9: typing in "Somewhere else" ticks its radio */
+$('input[name=q9_other]').addEventListener('input', e => {
+  if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
+});
+
 function collect() {
   const val = {};
   val.q1 = ($('input[name=q1]:checked') || {}).value || "";
@@ -361,7 +385,11 @@ function collect() {
   val.q7b = !val.q7 ? "" :
     consent === "__firstname__" ? "Yes, with my first name: " + $('input[name=q7b_name]').value.trim() : consent;
   val.q8 = $$('input[name=q8]:checked').map(b => b.value).join("; ");
-  val.q9 = $('input[name=q9]').value.trim();
+  const q9v = ($('input[name=q9]:checked') || {}).value || "";
+  val.q9 = q9v === "__other__" ? "Somewhere else: " + $('input[name=q9_other]').value.trim() : q9v;
+  val.q10  = $('#q10-consent').checked ? "Yes — you may contact me" : "";
+  val.q10b = $('input[name=q10_name]').value.trim();
+  val.q10c = $('input[name=q10_email]').value.trim();
   return val;
 }
 
@@ -375,7 +403,10 @@ function validate(val) {
                   || (q.closest('#branch-home') && !$("#branch-home").classList.contains("show"));
       ok = hidden || !!val[name];
     }
-    if (name === "q9" && val.q9) ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q9);
+    if (name === "q10") {
+      const any = val.q10 || val.q10b || val.q10c;
+      ok = !any || !!(val.q10 && val.q10b && val.q10c && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q10c));
+    }
     q.classList.toggle('invalid', !ok);
     if (!ok && !firstBad) firstBad = q;
   });
