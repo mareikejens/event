@@ -91,8 +91,8 @@ input.other-text{margin-top:0;padding:.2rem .5rem;border-width:0 0 1px;border-ra
 .scale label:has(:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
 .scale input{position:absolute;opacity:0;width:0;height:0}
 .scale-ends{display:flex;justify-content:space-between;margin-top:.45rem;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--fg-dim);gap:1rem}
-#quote-consent,#branch-home,#depth-follow{display:none}
-#quote-consent.show,#branch-home.show,#depth-follow.show{display:block}
+#quote-consent,#branch-home,#depth-follow,#contact-fields{display:none}
+#quote-consent.show,#branch-home.show,#depth-follow.show,#contact-fields.show{display:block}
 button[type=submit]{
   margin-top:2.5rem;width:100%;cursor:pointer;
   background:var(--accent-2);color:var(--fg);border:none;border-radius:.375rem;
@@ -296,15 +296,18 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <p class="err">Please pick one.</p>
       </div>
 
-      <div class="q" data-name="q11">
-        <h2>Last one: may we get back to you? <span class="opt">optional</span></h2>
-        <span class="help">The instruction guide, follow-ups on the topics you ticked above, future events — nothing else, no newsletter, no spam. Leaving it blank keeps this survey 100% anonymous.</span>
+      <div class="q" data-name="q11" data-required="radio">
+        <h2>Last one: may we get back to you? <span class="req">*</span></h2>
+        <span class="help">The instruction guide, follow-ups on the topics you ticked above, future events — nothing else, no newsletter, no spam.</span>
         <div class="opts">
-          <label class="choice"><input type="checkbox" name="q11" id="q11-consent" value="yes"><span>Yes, you may contact me — with the instruction guide, follow-ups on the topics I ticked above, and future events.</span></label>
+          <label class="choice"><input type="radio" name="q11" value="Yes — you may contact me" data-contact="yes"><span>Yes, you may contact me — with the instruction guide, follow-ups on the topics I ticked above, and future events.</span></label>
+          <label class="choice"><input type="radio" name="q11" value="No — keep me 100% anonymous"><span>No — keep me 100% anonymous.</span></label>
         </div>
-        <input type="text" name="q11_name" placeholder="Your name" autocomplete="name">
-        <input type="email" name="q11_email" placeholder="you@example.com" autocomplete="email">
-        <p class="err">To get back to you we need all three — the tick, your name and a valid email. Or leave the whole block blank.</p>
+        <div id="contact-fields">
+          <input type="text" name="q11_name" placeholder="Your name" autocomplete="name">
+          <input type="email" name="q11_email" placeholder="you@example.com" autocomplete="email">
+        </div>
+        <p class="err">Please choose — and if yes, we need your name and a valid email.</p>
       </div>
 
       <button type="submit">Send · get my instruction guide</button>
@@ -386,6 +389,11 @@ $('input[name=q10_other]').addEventListener('input', e => {
   if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
 });
 
+/* Q11: name + email fields only for "Yes" (hide only — never discard) */
+$$('input[name=q11]').forEach(r => r.addEventListener('change', () => {
+  $("#contact-fields").classList.toggle("show", r.dataset.contact === "yes");
+}));
+
 function collect() {
   const val = {};
   val.q1 = ($('input[name=q1]:checked') || {}).value || "";
@@ -409,9 +417,10 @@ function collect() {
   val.q9 = $('textarea[name=q9]').value.trim();
   const q10v = ($('input[name=q10]:checked') || {}).value || "";
   val.q10 = q10v === "__other__" ? "Somewhere else: " + $('input[name=q10_other]').value.trim() : q10v;
-  val.q11  = $('#q11-consent').checked ? "Yes — you may contact me" : "";
-  val.q11b = $('input[name=q11_name]').value.trim();
-  val.q11c = $('input[name=q11_email]').value.trim();
+  val.q11 = ($('input[name=q11]:checked') || {}).value || "";
+  const wantsContact = val.q11.indexOf("Yes") === 0;
+  val.q11b = wantsContact ? $('input[name=q11_name]').value.trim() : "";
+  val.q11c = wantsContact ? $('input[name=q11_email]').value.trim() : "";
   return val;
 }
 
@@ -427,8 +436,8 @@ function validate(val) {
       ok = hidden || !!val[name];
     }
     if (name === "q11") {
-      const any = val.q11 || val.q11b || val.q11c;
-      ok = !any || !!(val.q11 && val.q11b && val.q11c && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q11c));
+      const yes = val.q11.indexOf("Yes") === 0;
+      ok = !!val.q11 && (!yes || !!(val.q11b && val.q11c && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q11c)));
     }
     q.classList.toggle('invalid', !ok);
     if (!ok && !firstBad) firstBad = q;
