@@ -331,7 +331,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
           <div class="opts">
             <label class="choice"><input type="radio" name="q0c" value="Lunchtime — e.g. 12:00–13:30"><span>Lunchtime — e.g. 12:00–13:30</span></label>
             <label class="choice"><input type="radio" name="q0c" value="Evening — e.g. 18:00–19:30"><span>Evening — e.g. 18:00–19:30</span></label>
-            <label class="choice"><input type="radio" name="q0c" value="Either works for me"><span>Either works for me</span></label>
+            <label class="choice"><input type="radio" name="q0c" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline;flex-wrap:wrap">None of these — what would work:&nbsp;<input type="text" class="other-text" name="q0c_other" aria-label="None of these, please tell us what would work"></span></label>
           </div>
           <p class="err">Please pick one.</p>
         </div>
@@ -429,6 +429,11 @@ $$('input[name=q0b]').forEach(r => r.addEventListener('change', () => {
   $("#time-follow").classList.toggle("show", r.dataset.time === "yes");
 }));
 
+/* Q0c: typing in "None of these" ticks its radio */
+$('input[name=q0c_other]').addEventListener('input', e => {
+  if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
+});
+
 /* "Which part?" follow-up only when a depth option is ticked
    (hide only — never discard typed answers) */
 $$('input[name=q4]').forEach(c => c.addEventListener('change', () => {
@@ -470,8 +475,9 @@ function collect() {
   const attended = val.q0.indexOf("Yes") === 0;
   // No-show branch only counts for no-shows; time slot only while its branch applies
   val.q0b = !attended ? (($('input[name=q0b]:checked') || {}).value || "") : "";
-  val.q0c = (!attended && $("#time-follow").classList.contains("show"))
+  const q0cv = (!attended && $("#time-follow").classList.contains("show"))
     ? (($('input[name=q0c]:checked') || {}).value || "") : "";
+  val.q0c = q0cv === "__other__" ? "None of these — what would work: " + $('input[name=q0c_other]').value.trim() : q0cv;
   val.q1 = ($('input[name=q1]:checked') || {}).value || "";
   val.q2 = $$('input[name=q2]:checked').map(b =>
     b.value === "__other__" ? "Something else: " + $('input[name=q2_other]').value.trim() : b.value
