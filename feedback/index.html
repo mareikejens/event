@@ -91,8 +91,8 @@ input.other-text{margin-top:0;padding:.2rem .5rem;border-width:0 0 1px;border-ra
 .scale label:has(:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
 .scale input{position:absolute;opacity:0;width:0;height:0}
 .scale-ends{display:flex;justify-content:space-between;margin-top:.45rem;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--fg-dim);gap:1rem}
-#quote-consent,#branch-home,#depth-follow,#contact-fields{display:none}
-#quote-consent.show,#branch-home.show,#depth-follow.show,#contact-fields.show{display:block}
+#attendee-path,#noshow-path,#time-follow,#tail,#quote-consent,#branch-home,#depth-follow,#contact-fields{display:none}
+#attendee-path.show,#noshow-path.show,#time-follow.show,#tail.show,#quote-consent.show,#branch-home.show,#depth-follow.show,#contact-fields.show{display:block}
 button[type=submit]{
   margin-top:2.5rem;width:100%;cursor:pointer;
   background:var(--accent-2);color:var(--fg);border:none;border-radius:.375rem;
@@ -127,7 +127,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
   <div id="form-view">
     <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health · Post-event survey</p>
     <h1>How was our event? <span class="pink">3&nbsp;minutes</span> feedback.</h1>
-    <p class="intro">That was <strong>Decoding the Menstrual Cycle</strong> (Mon 20 July, TranslaTUM Munich). Thank you for being in the room. 💜</p>
+    <p class="intro">That was <strong>Decoding the Menstrual Cycle</strong> (Mon 20 July, TranslaTUM Munich). <span id="intro-mood">Thank you for being in the room. 💜</span></p>
     <div class="note-box">📖 Complete this survey and you'll receive your <strong>instruction guide on how to analyze your own data at home</strong>, following the workshop, with step-by-step instructions for each of the 3 AI options. We're currently putting the final touches on it.</div>
 
     <div id="already">✅ You've already filled this in — <a href="../workshop/" style="color:var(--accent);font-weight:600;text-decoration:underline">go straight to your instruction guide →</a></div>
@@ -135,6 +135,17 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
     <div id="config-warning">⚠ Not connected to a response sheet yet: submissions go nowhere. Fill in GOOGLE_FORM in the page source before sharing this link.</div>
 
     <form id="survey" novalidate>
+
+      <div class="q" data-name="q0" data-required="radio">
+        <h2>First things first: did you make it to the event? <span class="req">*</span></h2>
+        <div class="opts">
+          <label class="choice"><input type="radio" name="q0" value="Yes — I was there" data-attend="yes"><span>Yes, I was there.</span></label>
+          <label class="choice"><input type="radio" name="q0" value="No — I couldn't make it in the end"><span>No — I couldn't make it in the end.</span></label>
+        </div>
+        <p class="err">Please pick one — the rest of the page adapts to your answer.</p>
+      </div>
+
+      <div id="attendee-path">
 
       <p class="section-label">The verdict</p>
 
@@ -296,6 +307,40 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <p class="err">Please pick one.</p>
       </div>
 
+      </div><!-- /attendee-path -->
+
+      <div id="noshow-path">
+
+      <p class="section-label">Plan B</p>
+
+      <div class="q" data-name="q0b" data-required="radio">
+        <h2>Would you join the same content as a live online workshop? <span class="req">*</span></h2>
+        <span class="help">The talks plus the hands-on AI analysis, in about 1.5 hours — from wherever you are.</span>
+        <div class="opts">
+          <label class="choice"><input type="radio" name="q0b" value="Yes — count me in" data-time="yes"><span>Yes — count me in</span></label>
+          <label class="choice"><input type="radio" name="q0b" value="Maybe — depends on the timing" data-time="yes"><span>Maybe — depends on the timing</span></label>
+          <label class="choice"><input type="radio" name="q0b" value="No — online isn't my thing"><span>No — online isn't my thing</span></label>
+        </div>
+        <p class="err">Please pick one.</p>
+      </div>
+
+      <div id="time-follow">
+        <div class="q" data-name="q0c" data-required="radio">
+          <h2>Which time slot works best for you? <span class="req">*</span></h2>
+          <span class="help">For a 1.5-hour online workshop.</span>
+          <div class="opts">
+            <label class="choice"><input type="radio" name="q0c" value="Lunchtime — e.g. 12:00–13:30"><span>Lunchtime — e.g. 12:00–13:30</span></label>
+            <label class="choice"><input type="radio" name="q0c" value="Evening — e.g. 18:00–19:30"><span>Evening — e.g. 18:00–19:30</span></label>
+            <label class="choice"><input type="radio" name="q0c" value="Either works for me"><span>Either works for me</span></label>
+          </div>
+          <p class="err">Please pick one.</p>
+        </div>
+      </div>
+
+      </div><!-- /noshow-path -->
+
+      <div id="tail">
+
       <div class="q" data-name="q11" data-required="radio">
         <h2>Last one: may we get back to you? <span class="req">*</span></h2>
         <span class="help">The instruction guide, follow-ups on the topics you ticked above, future events — nothing else, no newsletter, no spam.</span>
@@ -311,6 +356,8 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
       </div>
 
       <button type="submit" id="submit-btn">Send · get my instruction guide</button>
+
+      </div><!-- /tail -->
     </form>
 
     <footer>Decoding the Menstrual Cycle · 20 July 2026 · TranslaTUM Munich</footer>
@@ -329,12 +376,13 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
 /* ── Response backend ─────────────────────────────────────────────────────
    Responses are POSTed into a Google Form (→ its linked Google Sheet).
    The sink form has one PARAGRAPH item per key below; entry ids come from
-   comms/build-post-event-form.gs → createPostEventSink(), which logs a
-   ready-to-paste config block. Until it's filled in, the page shows the
-   warning banner and refuses to submit (so no answer is silently lost). */
+   comms/build-post-event-form.gs → createPostEventSink() (q1–q11c) and
+   addNoShowQuestions() (q0/q0b/q0c), which log ready-to-paste ids. Until
+   every id is filled in, the page shows the warning banner and refuses to
+   submit (so no answer is silently lost). */
 const GOOGLE_FORM = {
   formId: "1FAIpQLScovl6Vn6PfVpzAZx0lpver0SFcAwUtVF96E192hYwwISe5yw",
-  entries: { q1:"2028090938", q2:"62361944", q3:"216920394", q4:"2036098786", q4b:"1557448489", q5:"1138767748", q6:"531386935", q6b:"1443490014", q7:"712936210", q7b:"111690058", q8:"1734317539", q9:"2116641998", q10:"1651914243", q11:"730397396", q11b:"2070422472", q11c:"170397350" }
+  entries: { q0:"713112547", q0b:"559426890", q0c:"1216540100", q1:"2028090938", q2:"62361944", q3:"216920394", q4:"2036098786", q4b:"1557448489", q5:"1138767748", q6:"531386935", q6b:"1443490014", q7:"712936210", q7b:"111690058", q8:"1734317539", q9:"2116641998", q10:"1651914243", q11:"730397396", q11b:"2070422472", q11c:"170397350" }
 };
 /* ───────────────────────────────────────────────────────────────────────── */
 
@@ -361,6 +409,25 @@ $('input[name=q2_other]').addEventListener('input', e => {
   const box = e.target.closest('label').querySelector('input[type=checkbox]');
   if (e.target.value.trim() && !box.checked) { box.checked = true; box.dispatchEvent(new Event('change')); }
 });
+
+/* Q0: the attendance gate — attendees get the full survey, no-shows get the
+   online-workshop branch. Both paths end in the shared contact question.
+   (hide only — never discard typed answers) */
+$$('input[name=q0]').forEach(r => r.addEventListener('change', () => {
+  const attended = r.dataset.attend === "yes";
+  $("#attendee-path").classList.toggle("show", attended);
+  $("#noshow-path").classList.toggle("show", !attended);
+  $("#tail").classList.add("show");
+  $("#intro-mood").textContent = attended
+    ? "Thank you for being in the room. 💜"
+    : "We missed you! No worries — you can still get the instruction guide and a second chance below. 💜";
+}));
+
+/* No-show branch: time-slot question only if online is an option
+   (hide only — never discard typed answers) */
+$$('input[name=q0b]').forEach(r => r.addEventListener('change', () => {
+  $("#time-follow").classList.toggle("show", r.dataset.time === "yes");
+}));
 
 /* "Which part?" follow-up only when a depth option is ticked
    (hide only — never discard typed answers) */
@@ -399,6 +466,12 @@ $$('input[name=q11]').forEach(r => r.addEventListener('change', () => {
 
 function collect() {
   const val = {};
+  val.q0 = ($('input[name=q0]:checked') || {}).value || "";
+  const attended = val.q0.indexOf("Yes") === 0;
+  // No-show branch only counts for no-shows; time slot only while its branch applies
+  val.q0b = !attended ? (($('input[name=q0b]:checked') || {}).value || "") : "";
+  val.q0c = (!attended && $("#time-follow").classList.contains("show"))
+    ? (($('input[name=q0c]:checked') || {}).value || "") : "";
   val.q1 = ($('input[name=q1]:checked') || {}).value || "";
   val.q2 = $$('input[name=q2]:checked').map(b =>
     b.value === "__other__" ? "Something else: " + $('input[name=q2_other]').value.trim() : b.value
@@ -424,6 +497,8 @@ function collect() {
   const wantsContact = val.q11.indexOf("Yes") === 0;
   val.q11b = wantsContact ? $('input[name=q11_name]').value.trim() : "";
   val.q11c = wantsContact ? $('input[name=q11_email]').value.trim() : "";
+  // Only the visible path is submitted (answers typed before switching stay in the DOM, not in the data)
+  if (!attended) for (const k of ["q1","q2","q3","q4","q4b","q5","q6","q6b","q7","q7b","q8","q9","q10"]) val[k] = "";
   return val;
 }
 
@@ -431,14 +506,11 @@ function validate(val) {
   let firstBad = null;
   $$('.q').forEach(q => {
     const name = q.dataset.name, kind = q.dataset.required;
+    // Anything inside a collapsed branch (attendee/no-show path, follow-ups, tail) is skipped
+    const hidden = q.offsetParent === null;
     let ok = true;
-    if (kind) {
-      const hidden = (q.closest('#quote-consent') && !$("#quote-consent").classList.contains("show"))
-                  || (q.closest('#branch-home') && !$("#branch-home").classList.contains("show"))
-                  || (q.closest('#depth-follow') && !$("#depth-follow").classList.contains("show"));
-      ok = hidden || !!val[name];
-    }
-    if (name === "q11") {
+    if (kind && !hidden) ok = !!val[name];
+    if (name === "q11" && !hidden) {
       const yes = val.q11.indexOf("Yes") === 0;
       ok = !!val.q11 && (!yes || !!(val.q11b && val.q11c && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q11c)));
     }
