@@ -91,8 +91,8 @@ input.other-text{margin-top:0;padding:.2rem .5rem;border-width:0 0 1px;border-ra
 .scale label:has(:focus-visible){outline:2px solid var(--accent);outline-offset:2px}
 .scale input{position:absolute;opacity:0;width:0;height:0}
 .scale-ends{display:flex;justify-content:space-between;margin-top:.45rem;font-family:"JetBrains Mono",monospace;font-size:.7rem;color:var(--fg-dim);gap:1rem}
-#quote-consent,#branch-home{display:none}
-#quote-consent.show,#branch-home.show{display:block}
+#quote-consent,#branch-home,#depth-follow{display:none}
+#quote-consent.show,#branch-home.show,#depth-follow.show{display:block}
 button[type=submit]{
   margin-top:2.5rem;width:100%;cursor:pointer;
   background:var(--accent-2);color:var(--fg);border:none;border-radius:.375rem;
@@ -128,8 +128,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
     <p class="kicker">AI <span style="font-weight:700">×</span> Women's Health · Post-event survey</p>
     <h1>How was our event? <span class="pink">3&nbsp;minutes</span> feedback.</h1>
     <p class="intro">That was <strong>Decoding the Menstrual Cycle</strong> (Mon 20 July, TranslaTUM Munich). Thank you for being in the room. 💜</p>
-    <div class="note-box">📖 Complete this survey and you'll receive your <strong>instruction guide on how to analyze your own data at home</strong> — the full workshop flow, with step-by-step instructions for each of the AI options. We're putting the final touches on it and will share it with you after survey completion.</div>
-    <p class="intro" style="margin-top:1rem">Anonymous — unless you choose to leave your contact details at the very end, nothing here is tied to you.</p>
+    <div class="note-box">📖 Complete this survey and you'll receive your <strong>instruction guide on how to analyze your own data at home</strong>, following the workshop, with step-by-step instructions for each of the 3 AI options. We're currently putting the final touches on it.</div>
 
     <div id="already">✅ You've already filled this in — <a href="../workshop/" style="color:var(--accent);font-weight:600;text-decoration:underline">go straight to your instruction guide →</a></div>
 
@@ -140,7 +139,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
       <p class="section-label">The verdict</p>
 
       <div class="q" data-name="q1" data-required="radio">
-        <h2>How likely are you to recommend an evening like this to a friend? <span class="req">*</span></h2>
+        <h2>How likely are you to recommend an event like this to a friend? <span class="req">*</span></h2>
         <div class="scale">
           <label><input type="radio" name="q1" value="0"><span>0</span></label>
           <label><input type="radio" name="q1" value="1"><span>1</span></label>
@@ -154,7 +153,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
           <label><input type="radio" name="q1" value="9"><span>9</span></label>
           <label><input type="radio" name="q1" value="10"><span>10</span></label>
         </div>
-        <div class="scale-ends"><span>0 · not my thing</span><span>10 · will definitely do / already told them</span></div>
+        <div class="scale-ends"><span>0 · not my thing</span><span>10 · will definitely do / did already</span></div>
         <p class="err">Please pick a number.</p>
       </div>
 
@@ -185,23 +184,30 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <h2>Anything that got in the way? <span class="req">*</span></h2>
         <span class="help">Tick all that applied to you.</span>
         <div class="opts">
-          <label class="choice"><input type="checkbox" name="q4" value="Workshop moved too fast"><span>Workshop moved too fast</span></label>
-          <label class="choice"><input type="checkbox" name="q4" value="Workshop moved too slow"><span>Workshop moved too slow</span></label>
-          <label class="choice"><input type="checkbox" name="q4" value="Too technical for me"><span>Too technical for me</span></label>
-          <label class="choice"><input type="checkbox" name="q4" value="Not deep enough for me"><span>Not deep enough for me</span></label>
-          <label class="choice"><input type="checkbox" name="q4" value="I got stuck and couldn't get back in"><span>I got stuck and couldn't get back in</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="The interactive workshop part moved too fast"><span>The interactive workshop part moved too fast</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="The interactive workshop part moved too slow"><span>The interactive workshop part moved too slow</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="I got stuck in the workshop and couldn't get back in"><span>I got stuck in the workshop and couldn't get back in</span></label>
           <label class="choice"><input type="checkbox" name="q4" value="AI account or tech trouble (logins, uploads, limits)"><span>AI account or tech trouble (logins, uploads, limits)</span></label>
-          <label class="choice"><input type="checkbox" name="q4" value="Hard to hear or see"><span>Hard to hear or see</span></label>
-          <label class="choice"><input type="checkbox" name="q4" value="Room, seating or temperature"><span>Room, seating or temperature</span></label>
-          <label class="choice"><input type="checkbox" name="q4" value="Timing (start, length, day of week)"><span>Timing (start, length, day of week)</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Too deep for me" data-depth><span>Too deep for me</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Not deep enough for me" data-depth><span>Not deep enough for me</span></label>
+          <label class="choice"><input type="checkbox" name="q4" value="Logistics (room, hard to hear or see, timing)"><span>Logistics (room, hard to hear or see, timing)</span></label>
           <label class="choice"><input type="checkbox" name="q4" value="Nothing major, honestly" data-exclusive><span>Nothing major, honestly</span></label>
         </div>
         <p class="err">Please tick at least one ("Nothing major" counts).</p>
       </div>
 
+      <div id="depth-follow">
+        <div class="q" data-name="q4b" data-required="text">
+          <h2>Which part was that? <span class="req">*</span></h2>
+          <span class="help">The talks, the workshop, a specific step — where was it too deep or not deep enough?</span>
+          <input type="text" name="q4b" placeholder="That part was…">
+          <p class="err">One word is enough.</p>
+        </div>
+      </div>
+
       <div class="q" data-name="q5" data-required="text">
         <h2>If we ran this again next month: what's the one thing we should change? <span class="req">*</span></h2>
-        <span class="help">Be blunt. Praise is lovely, but this answer is where the next event gets better. "Nothing" is allowed — if it's true.</span>
+        <span class="help">Please be blunt! Praise is lovely, but this answer is where the next event gets better.</span>
         <textarea name="q5" placeholder="Change this…"></textarea>
         <p class="err">This is the one we really read — one honest sentence, please.</p>
       </div>
@@ -212,7 +218,9 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <h2>Do you want to repeat the analysis on your own data? <span class="req">*</span></h2>
         <span class="help">The same flow from the workshop — at home, on your real history.</span>
         <div class="opts">
-          <label class="choice"><input type="radio" name="q6" value="Yes — that's the plan" data-branch="yes"><span>Yes — that's the plan</span></label>
+          <label class="choice"><input type="radio" name="q6" value="Yes — with Claude / ChatGPT (paid account)" data-branch="yes"><span>Yes — with Claude / ChatGPT (paid account)</span></label>
+          <label class="choice"><input type="radio" name="q6" value="Yes — by building my own app" data-branch="yes"><span>Yes — by building my own app</span></label>
+          <label class="choice"><input type="radio" name="q6" value="Yes — running an open model locally" data-branch="yes"><span>Yes — running an open model locally</span></label>
           <label class="choice"><input type="radio" name="q6" value="Maybe — depends how hard it is" data-branch="yes"><span>Maybe — depends how hard it is</span></label>
           <label class="choice"><input type="radio" name="q6" value="No — the evening was enough for me"><span>No — the evening was enough for me</span></label>
         </div>
@@ -255,7 +263,6 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
 
       <div class="q" data-name="q8" data-required="checkbox">
         <h2>What should exist after this evening? <span class="req">*</span></h2>
-        <span class="help">We'll genuinely build what gets ticked most.</span>
         <div class="opts">
           <label class="choice"><input type="checkbox" name="q8" value="A follow-up workshop, but deeper into AI"><span>A follow-up workshop, but deeper into AI</span></label>
           <label class="choice"><input type="checkbox" name="q8" value="A follow-up workshop, but deeper into menstrual cycle and hormones"><span>A follow-up workshop, but deeper into menstrual cycle and hormones</span></label>
@@ -269,28 +276,34 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <p class="err">Please tick at least one ("Nothing for now" counts).</p>
       </div>
 
-      <div class="q" data-name="q9" data-required="radio">
+      <div class="q" data-name="q9">
+        <h2>Please describe what kind of Women's Health experience you wish for when you visit a gynaecologist. <span class="opt">optional</span></h2>
+        <span class="help">Think about including your health data, informative materials, innovative ideas for gynaecological consultations etc.</span>
+        <textarea name="q9" placeholder="I wish…"></textarea>
+      </div>
+
+      <div class="q" data-name="q10" data-required="radio">
         <h2>How did you find out about the event? <span class="req">*</span></h2>
         <div class="opts">
-          <label class="choice"><input type="radio" name="q9" value="A friend or colleague"><span>A friend or colleague</span></label>
-          <label class="choice"><input type="radio" name="q9" value="LinkedIn"><span>LinkedIn</span></label>
-          <label class="choice"><input type="radio" name="q9" value="Instagram"><span>Instagram</span></label>
-          <label class="choice"><input type="radio" name="q9" value="Luma"><span>Luma</span></label>
-          <label class="choice"><input type="radio" name="q9" value="TUM / university channels"><span>TUM / university channels</span></label>
-          <label class="choice"><input type="radio" name="q9" value="WhatsApp"><span>WhatsApp</span></label>
-          <label class="choice"><input type="radio" name="q9" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline">Somewhere else:&nbsp;<input type="text" class="other-text" name="q9_other" aria-label="Somewhere else, please specify"></span></label>
+          <label class="choice"><input type="radio" name="q10" value="A friend or colleague"><span>A friend or colleague</span></label>
+          <label class="choice"><input type="radio" name="q10" value="LinkedIn"><span>LinkedIn</span></label>
+          <label class="choice"><input type="radio" name="q10" value="Instagram"><span>Instagram</span></label>
+          <label class="choice"><input type="radio" name="q10" value="Luma"><span>Luma</span></label>
+          <label class="choice"><input type="radio" name="q10" value="TUM / university channels"><span>TUM / university channels</span></label>
+          <label class="choice"><input type="radio" name="q10" value="WhatsApp"><span>WhatsApp</span></label>
+          <label class="choice"><input type="radio" name="q10" value="__other__"><span style="display:flex;gap:.5rem;flex:1;align-items:baseline">Somewhere else:&nbsp;<input type="text" class="other-text" name="q10_other" aria-label="Somewhere else, please specify"></span></label>
         </div>
         <p class="err">Please pick one.</p>
       </div>
 
-      <div class="q" data-name="q10">
+      <div class="q" data-name="q11">
         <h2>Last one: may we get back to you? <span class="opt">optional</span></h2>
         <span class="help">The instruction guide, follow-ups on the topics you ticked above, future events — nothing else, no newsletter, no spam. Leaving it blank keeps this survey 100% anonymous.</span>
         <div class="opts">
-          <label class="choice"><input type="checkbox" name="q10" id="q10-consent" value="yes"><span>Yes, you may contact me — with the instruction guide, follow-ups on the topics I ticked above, and future events.</span></label>
+          <label class="choice"><input type="checkbox" name="q11" id="q11-consent" value="yes"><span>Yes, you may contact me — with the instruction guide, follow-ups on the topics I ticked above, and future events.</span></label>
         </div>
-        <input type="text" name="q10_name" placeholder="Your name" autocomplete="name">
-        <input type="email" name="q10_email" placeholder="you@example.com" autocomplete="email">
+        <input type="text" name="q11_name" placeholder="Your name" autocomplete="name">
+        <input type="email" name="q11_email" placeholder="you@example.com" autocomplete="email">
         <p class="err">To get back to you we need all three — the tick, your name and a valid email. Or leave the whole block blank.</p>
       </div>
 
@@ -318,7 +331,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
    warning banner and refuses to submit (so no answer is silently lost). */
 const GOOGLE_FORM = {
   formId: "",
-  entries: { q1:"", q2:"", q3:"", q4:"", q5:"", q6:"", q6b:"", q7:"", q7b:"", q8:"", q9:"", q10:"", q10b:"", q10c:"" }
+  entries: { q1:"", q2:"", q3:"", q4:"", q4b:"", q5:"", q6:"", q6b:"", q7:"", q7b:"", q8:"", q9:"", q10:"", q11:"", q11b:"", q11c:"" }
 };
 /* ───────────────────────────────────────────────────────────────────────── */
 
@@ -346,6 +359,12 @@ $('input[name=q2_other]').addEventListener('input', e => {
   if (e.target.value.trim() && !box.checked) { box.checked = true; box.dispatchEvent(new Event('change')); }
 });
 
+/* "Which part?" follow-up only when a depth option is ticked
+   (hide only — never discard typed answers) */
+$$('input[name=q4]').forEach(c => c.addEventListener('change', () => {
+  $("#depth-follow").classList.toggle("show", $$('input[name=q4][data-depth]:checked').length > 0);
+}));
+
 /* Export follow-up only for people who want to repeat the analysis
    (hide only — never discard typed answers) */
 $$('input[name=q6]').forEach(r => r.addEventListener('change', () => {
@@ -362,8 +381,8 @@ $('input[name=q7b_name]').addEventListener('input', e => {
   if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
 });
 
-/* Q9: typing in "Somewhere else" ticks its radio */
-$('input[name=q9_other]').addEventListener('input', e => {
+/* Q10: typing in "Somewhere else" ticks its radio */
+$('input[name=q10_other]').addEventListener('input', e => {
   if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
 });
 
@@ -375,6 +394,8 @@ function collect() {
   ).join("; ");
   val.q3 = $('input[name=q3]').value.trim();
   val.q4 = $$('input[name=q4]:checked').map(b => b.value).join("; ");
+  // "Which part?" only counts while a depth option is ticked
+  val.q4b = $("#depth-follow").classList.contains("show") ? $('input[name=q4b]').value.trim() : "";
   val.q5 = $('textarea[name=q5]').value.trim();
   val.q6 = ($('input[name=q6]:checked') || {}).value || "";
   // The export follow-up only counts when the branch applies ("No" = skipped)
@@ -385,11 +406,12 @@ function collect() {
   val.q7b = !val.q7 ? "" :
     consent === "__firstname__" ? "Yes, with my first name: " + $('input[name=q7b_name]').value.trim() : consent;
   val.q8 = $$('input[name=q8]:checked').map(b => b.value).join("; ");
-  const q9v = ($('input[name=q9]:checked') || {}).value || "";
-  val.q9 = q9v === "__other__" ? "Somewhere else: " + $('input[name=q9_other]').value.trim() : q9v;
-  val.q10  = $('#q10-consent').checked ? "Yes — you may contact me" : "";
-  val.q10b = $('input[name=q10_name]').value.trim();
-  val.q10c = $('input[name=q10_email]').value.trim();
+  val.q9 = $('textarea[name=q9]').value.trim();
+  const q10v = ($('input[name=q10]:checked') || {}).value || "";
+  val.q10 = q10v === "__other__" ? "Somewhere else: " + $('input[name=q10_other]').value.trim() : q10v;
+  val.q11  = $('#q11-consent').checked ? "Yes — you may contact me" : "";
+  val.q11b = $('input[name=q11_name]').value.trim();
+  val.q11c = $('input[name=q11_email]').value.trim();
   return val;
 }
 
@@ -400,12 +422,13 @@ function validate(val) {
     let ok = true;
     if (kind) {
       const hidden = (q.closest('#quote-consent') && !$("#quote-consent").classList.contains("show"))
-                  || (q.closest('#branch-home') && !$("#branch-home").classList.contains("show"));
+                  || (q.closest('#branch-home') && !$("#branch-home").classList.contains("show"))
+                  || (q.closest('#depth-follow') && !$("#depth-follow").classList.contains("show"));
       ok = hidden || !!val[name];
     }
-    if (name === "q10") {
-      const any = val.q10 || val.q10b || val.q10c;
-      ok = !any || !!(val.q10 && val.q10b && val.q10c && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q10c));
+    if (name === "q11") {
+      const any = val.q11 || val.q11b || val.q11c;
+      ok = !any || !!(val.q11 && val.q11b && val.q11c && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.q11c));
     }
     q.classList.toggle('invalid', !ok);
     if (!ok && !firstBad) firstBad = q;
