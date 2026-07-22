@@ -310,7 +310,7 @@ footer{margin-top:2rem;font-family:"JetBrains Mono",monospace;font-size:.72rem;c
         <p class="err">Please choose — and if yes, we need your name and a valid email.</p>
       </div>
 
-      <button type="submit">Send · get my instruction guide</button>
+      <button type="submit" id="submit-btn">Send · get my instruction guide</button>
     </form>
 
     <footer>Decoding the Menstrual Cycle · 20 July 2026 · TranslaTUM Munich</footer>
@@ -389,9 +389,12 @@ $('input[name=q10_other]').addEventListener('input', e => {
   if (e.target.value.trim()) e.target.closest('label').querySelector('input[type=radio]').checked = true;
 });
 
-/* Q11: name + email fields only for "Yes" (hide only — never discard) */
+/* Q11: name + email fields only for "Yes" (hide only — never discard).
+   The submit button only promises the guide if we may actually send it. */
 $$('input[name=q11]').forEach(r => r.addEventListener('change', () => {
-  $("#contact-fields").classList.toggle("show", r.dataset.contact === "yes");
+  const yes = r.dataset.contact === "yes";
+  $("#contact-fields").classList.toggle("show", yes);
+  $("#submit-btn").textContent = yes ? "Send · get my instruction guide" : "Send feedback";
 }));
 
 function collect() {
